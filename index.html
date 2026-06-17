@@ -130,6 +130,12 @@
   .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
   /* reveal */
+  .masonry{column-count:3;column-gap:14px}
+  .masonry figure{break-inside:avoid;margin:0 0 14px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .masonry img{display:block;width:100%;height:auto}
+  .masonry figcaption{font-size:12.5px;color:var(--muted);padding:9px 13px}
+  @media(max-width:820px){.masonry{column-count:2}}
+  @media(max-width:520px){.masonry{column-count:1}}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
 
@@ -158,6 +164,7 @@
       <a href="#projects" onclick="closeMenu()">Projects</a>
       <a href="#experience" onclick="closeMenu()">Experience</a>
       <a href="#skills" onclick="closeMenu()">Skills</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
       <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
   </div>
@@ -168,7 +175,7 @@
   <div class="hero-slides" aria-hidden="true">
     <div class="slide" style="background-image:url('images/hero-1.jpg')"></div>
     <div class="slide" style="background-image:url('images/hero-2.jpg')"></div>
-    <div class="slide" style="background-image:url('images/hero-3.jpg')"></div>
+    <div class="slide" style="background-image:url('images/hero-3.jpg');background-position:center 30%"></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -312,6 +319,22 @@
         <span>Python</span><span>MATLAB</span><span>Java</span><span>HTML / CSS / JS</span><span>Flask</span></div></div>
       <div class="skillcard reveal"><h4>Controls &amp; Test</h4><div class="chips">
         <span>PID</span><span>State-Space / LQR</span><span>Loop Shaping</span><span>Sensor Fusion</span><span>Optical Metrology</span><span>Machine Vision</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h3>Gallery</h3></div>
+    <p class="lead-2">A few shots of the builds and the work behind them.</p>
+    <div class="masonry">
+      <figure><img loading="lazy" src="images/mae3-2.jpg" alt="The MAE3 robot" /><figcaption>The MAE3 robot, 3D-printed and built from scratch.</figcaption></figure>
+      <figure><img loading="lazy" src="images/mouse-system-2.jpg" alt="The automated mouse-training rig" /><figcaption>The automated mouse-training rig (senior design).</figcaption></figure>
+      <figure><img loading="lazy" src="images/mae3-4.jpg" alt="The team after taking first place" /><figcaption>The team after first place at the MAE3 competition.</figcaption></figure>
+      <figure><img loading="lazy" src="images/mae3-1.jpg" alt="Close-up of the MAE3 robot" /><figcaption>The drivetrain and gripper, up close.</figcaption></figure>
+      <figure><img loading="lazy" src="images/mouse-system-1.jpg" alt="Presenting the senior design project" /><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
+      <figure><img loading="lazy" src="images/mae3-3.jpg" alt="The MAE3 robot with its first-place certificate" /><figcaption>First place, MAE3 Fall 2024.</figcaption></figure>
     </div>
   </div>
 </section>
