@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Farbod Haeri, Mechanical Engineer</title>
-<meta name="description" content="Farbod Haeri, a mechanical engineering student (BS/MS, UC San Diego) working in robotics, controls, and hardware: drones, lab instruments, and things that have to work in the real world." />
+<meta name="description" content="Farbod Haeri, a mechanical engineering student (BS/MS, UC San Diego) focused on robotics, controls, and building hardware that has to work in the real world." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -51,12 +51,12 @@
   .menu-toggle{display:none;background:none;border:0;cursor:pointer;font-size:22px;color:var(--ink)}
 
   /* HERO */
-  .hero{background:linear-gradient(160deg,#0c1830 0%,#13233f 55%,#1a2b4c 100%);color:#eaf1ff;
-    position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;inset:0;opacity:.5;
-    background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.10) 1px,transparent 0);
-    background-size:26px 26px;mask-image:linear-gradient(180deg,#000,transparent 80%)}
-  .hero .wrap{position:relative;z-index:2;padding:84px 24px 88px}
+  .hero{position:relative;overflow:hidden;background:#0b1730;color:#eaf1ff}
+  .hero-slides{position:absolute;inset:0;z-index:0}
+  .hero-slides .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
+  .hero-slides .slide.active{opacity:1}
+  .hero-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(8,15,30,.82) 0%,rgba(12,22,42,.64) 60%,rgba(20,33,60,.72) 100%)}
+  .hero .wrap{position:relative;z-index:2;padding:84px 24px 88px;text-shadow:0 1px 16px rgba(0,0,0,.30)}
   .eyebrow{font-size:13px;font-weight:500;color:#7fa6ff;letter-spacing:.08em;text-transform:uppercase}
   .hero h1{font-size:clamp(40px,7vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:800;margin:14px 0 8px}
   .hero h2{font-size:clamp(18px,2.6vw,23px);font-weight:600;color:#bcd0f5;letter-spacing:-.01em}
@@ -158,21 +158,27 @@
       <a href="#projects" onclick="closeMenu()">Projects</a>
       <a href="#experience" onclick="closeMenu()">Experience</a>
       <a href="#skills" onclick="closeMenu()">Skills</a>
-      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
   </div>
 </header>
 
 <a id="top"></a>
 <section class="hero">
+  <div class="hero-slides" aria-hidden="true">
+    <div class="slide" style="background-image:url('images/hero-1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/hero-2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/hero-3.jpg')"></div>
+  </div>
+  <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">Mechanical Engineer · Robotics · Controls · Hardware</p>
     <h1>Farbod Haeri</h1>
     <h2>I build things that have to work in the real world.</h2>
-    <p class="lead">I'm a Mechanical Engineering student at UC San Diego, on the BS/MS track. Most of what I do mixes mechanical design, controls, and code: drones, lab instruments, and robots. I like taking a project from the first CAD sketch all the way to something that actually flies, moves, or runs an experiment.</p>
+    <p class="lead">I work mostly in robotics and controls, and I care about actually building what I design instead of stopping at the CAD model. Right now most of that goes into a 6-DoF drone I'm developing in Prof. Bewley's lab at UC San Diego.</p>
     <div class="hero-cta">
       <a class="btn light" href="#projects">View Projects</a>
-      <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+      <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       <a class="btn outline" href="https://www.linkedin.com/in/farbodhaeri" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn outline" id="ghlink" href="#" target="_blank" rel="noopener">GitHub</a>
     </div>
@@ -190,9 +196,9 @@
     <div class="sec-head"><span class="num">01</span><h3>About</h3></div>
     <div class="about-grid">
       <div>
-        <p>I'm a Mechanical Engineering student at UC San Diego, on the combined BS/MS track. Robotics, controls, and hardware are the parts I care about most, especially anything that still has to work once it's off the screen and on the bench.</p>
+        <p>I'm a Mechanical Engineering student at UC San Diego, on the combined BS/MS track, most interested in robotics, controls, and the hands-on side of hardware.</p>
         <p>Right now I'm in Prof. Thomas Bewley's lab, designing and flying a fully-actuated hexacopter. Before that I built metrology and fatigue-testing pipelines in Prof. Maziar Ghazinejad's materials lab, and earlier I spent two years at Apple's Elk Grove facility working on materials and new-product builds.</p>
-        <p>What I like most is the full loop: design it, machine or print it, write the code that runs it, then test it until it behaves. Most evenings that ends up being a soldering iron, a flight controller, or a 3D printer I'm halfway through modifying.</p>
+        <p>What I like most is owning a project end to end: designing it, building it, writing the code that runs it, then testing until it actually behaves. That make-it-work part is the side of engineering I care about.</p>
       </div>
       <div class="about-card">
         <h4>Quick Facts</h4>
@@ -233,6 +239,7 @@
         <span class="role">Software / UI Engineer</span>
         <p>My senior capstone for a UCSD neuroscience lab: an automated touchscreen rig that trains group-housed mice on the 5-choice task. I handled the software side of it, which meant an operator dashboard (HTML/CSS/JS) with live per-mouse metrics, a Python/Flask "brain" that runs through every training stage in order, and the data-logging plus the Wi-Fi/MQTT link to the hardware.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">MQTT</span><span class="tag">State Machines</span></div>
+        <a href="mouse-system.html" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--accent-dk)">See the full breakdown of this project</a>
       </article>
 
       <article class="card reveal">
@@ -253,16 +260,6 @@
         <span class="role">Mechanical Lead</span>
         <p>Led mechanical design on a small team: built the chassis and drivetrain from scratch and iterated through three revisions to take first place in the competition.</p>
         <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Rapid Prototyping</span></div>
-      </article>
-
-      <article class="card reveal">
-        <div class="top">
-          <div><h4>RC, Drone &amp; 3D Printer Builds</h4><div class="org">My ongoing workshop habit</div></div>
-          <div class="yr">Since 2022</div>
-        </div>
-        <span class="role">For the love of it</span>
-        <p>I build and tune RC aircraft and ground vehicles from the ground up: motors, ESCs, flight controllers, PID loops, and a lot of through-hole and SMD soldering. I also modify FDM printers (hot-end swaps, Klipper flashes, custom mounts) and use them most weeks to prototype parts.</p>
-        <div class="tags"><span class="tag">Electronics</span><span class="tag">Soldering</span><span class="tag">PID</span><span class="tag">Klipper</span></div>
       </article>
 
     </div>
@@ -325,9 +322,9 @@
     <h3>Let's build something.</h3>
     <p>Open to internships and full-time roles in robotics, aerospace, and hardware. The fastest way to reach me is email.</p>
     <div class="row-cta">
-      <a class="btn" href="mailto:fhaeri@ucsd.edu">fhaeri@ucsd.edu</a>
+      <a class="btn" id="emailBtn" href="mailto:fhaeri@ucsd.edu" title="Click to copy">fhaeri@ucsd.edu</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/farbodhaeri" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
   </div>
 </section>
@@ -351,6 +348,32 @@
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
   },{threshold:.14});
   document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  // hero photo slideshow (cross-fade); shows the dark background until images are added
+  var slides = document.querySelectorAll('.hero-slides .slide');
+  if(slides.length){
+    var si = 0; slides[0].classList.add('active');
+    if(slides.length > 1){
+      setInterval(function(){
+        slides[si].classList.remove('active');
+        si = (si + 1) % slides.length;
+        slides[si].classList.add('active');
+      }, 5000);
+    }
+  }
+  // email: copy to clipboard (a mailto link does nothing without a default mail app)
+  var eb = document.getElementById('emailBtn');
+  if(eb){
+    eb.addEventListener('click', function(e){
+      if(navigator.clipboard){
+        e.preventDefault();
+        navigator.clipboard.writeText('fhaeri@ucsd.edu').then(function(){
+          var prev = eb.textContent;
+          eb.textContent = 'Copied to clipboard';
+          setTimeout(function(){ eb.textContent = prev; }, 1600);
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>

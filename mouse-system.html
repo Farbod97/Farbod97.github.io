@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Automated Mouse Training System | Farbod Haeri</title>
+<meta name="description" content="Senior design project at UC San Diego (Jared Young Lab): an automated, RFID-gated touchscreen system that trains group-housed mice. Farbod Haeri built the software and dashboard." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#ffffff;--bg-alt:#f5f8fc;--ink:#0d1a2d;--muted:#5a6b81;--line:#e3e9f1;
+    --accent:#2f6df6;--accent-dk:#1c4fd1;--chip:#eaf1fe;--radius:16px;--max:900px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
+
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:17px}
+  .brand span{color:var(--accent)}
+  .back{font-size:14px;font-weight:500;color:var(--muted)}
+  .back:hover{color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden;background:#0b1730;color:#eaf1ff}
+  .hero .bg{position:absolute;inset:0;background:url('images/mouse-system-2.jpg') center/cover;z-index:0}
+  .hero .tint{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(8,15,30,.86),rgba(12,22,42,.74))}
+  .hero .wrap{position:relative;z-index:2;padding:66px 24px 60px;text-shadow:0 1px 16px rgba(0,0,0,.35)}
+  .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8fb0ff}
+  .hero h1{font-size:clamp(30px,5.4vw,48px);line-height:1.05;letter-spacing:-.025em;font-weight:800;margin:12px 0 14px}
+  .hero p{max-width:600px;color:#c4d4ef;font-size:17px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:22px}
+  .meta span{font-size:12.5px;font-weight:500;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#eaf1ff;padding:5px 11px;border-radius:20px}
+
+  section{padding:46px 0}
+  section.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:16px}
+  h3{font-size:21px;letter-spacing:-.01em;margin:0 0 8px}
+  p.body{font-size:16.5px;color:#33415a;margin-bottom:16px}
+  .lede{font-size:18px;color:#26344a}
+  strong{font-weight:600}
+
+  .built{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+  .built .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .built .item h4{font-size:16px;margin-bottom:5px}
+  .built .item code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent-dk);background:var(--chip);padding:1px 6px;border-radius:5px}
+  .built .item p{font-size:14.5px;color:#46556e;margin-top:7px}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:6px 0 4px}
+  .flow .node{flex:1 1 200px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .flow .node .k{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+  .flow .node h4{font-size:16px;margin:4px 0 4px}
+  .flow .node p{font-size:13.5px;color:#46556e}
+  .flow .link{display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);font-weight:500;padding:0 2px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .chips span{font-size:13.5px;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:8px;color:#33415a}
+
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}
+  .gallery figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .gallery img{display:block;width:100%;height:auto}
+  .gallery figcaption{font-size:13px;color:var(--muted);padding:10px 14px}
+
+  .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:10px}
+  .btn:hover{background:var(--accent-dk)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:var(--bg-alt)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13.5px;text-align:center}
+
+  @media(max-width:720px){
+    .built,.gallery{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Farbod<span>.</span>Haeri</a>
+    <a class="back" href="index.html">Back to home</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="tint" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Senior Design · Jared Young Lab, UC San Diego</p>
+    <h1>Automated Cognitive-Training System for Mice</h1>
+    <p>An RFID-gated, touchscreen training rig that lets group-housed lab mice train themselves one at a time. I built the software and the dashboard that runs it.</p>
+    <div class="meta">
+      <span>MAE 156B Capstone</span>
+      <span>Winter to Spring 2026</span>
+      <span>Role: Software / UI Engineer</span>
+      <span>Team of 4</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The problem</h2>
+    <p class="body lede">Mice used in cognitive research are usually housed alone so each one can be trained on its own schedule. That isolation stresses the animals and shifts their neurological baseline, which muddies the very behavioral data the studies depend on.</p>
+    <p class="body">Our sponsor, the Jared Young Lab in UC San Diego's Department of Psychiatry, wanted a way to keep mice group-housed and still run controlled training. The team built an enclosure where mice live together and reach an automated touchscreen trainer through an RFID airlock that only lets one identified mouse in at a time. It runs the lab's 5-Choice attention task automatically and aims to cut the training timeline from the usual 5 to 6 months down to about 10 to 15 days.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>What I built</h2>
+    <p class="body">I owned the software side of the project. The original design ran everything on the microcontroller; I moved the brains onto a small lab computer (an Intel NUC) so the training logic lives in Python and can be changed without re-flashing hardware. The touchscreen controller became a simple peripheral that just takes commands.</p>
+    <div class="built">
+      <div class="item">
+        <h4>Operator dashboard</h4>
+        <code>static/index.html</code>
+        <p>The browser interface the lab actually uses: live per-mouse status, RFID reads lighting up each antenna, gate controls, and a running event log. Designed and built from scratch.</p>
+      </div>
+      <div class="item">
+        <h4>Supervisory server</h4>
+        <code>bridge.py · Flask</code>
+        <p>The NUC "brain." Serves the dashboard, streams live events to it over SSE, talks to the microcontroller over USB serial, and owns the mouse roster and schedule.</p>
+      </div>
+      <div class="item">
+        <h4>Training state machine</h4>
+        <code>cycle.py</code>
+        <p>Runs one full training cycle per mouse and steps through every stage. It is created for one specific RFID tag and silently rejects any other mouse at every step.</p>
+      </div>
+      <div class="item">
+        <h4>Scheduler + logging</h4>
+        <code>scheduler.py</code>
+        <p>Opens each mouse's daily session window automatically, then writes per-trial CSVs, per-session summaries, and a raw event log for the researchers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How it fits together</h2>
+    <div class="flow">
+      <div class="node">
+        <div class="k">Browser</div>
+        <h4>Operator dashboard</h4>
+        <p>What the researcher sees and clicks. Updates live as events stream in.</p>
+      </div>
+      <div class="link">talks to, over HTTP + live event stream</div>
+      <div class="node">
+        <div class="k">Lab computer (NUC)</div>
+        <h4>Python bridge</h4>
+        <p>Decides what runs and when. Holds the schedule, the state machine, and the logs.</p>
+      </div>
+      <div class="link">talks to, over USB serial</div>
+      <div class="node">
+        <div class="k">Microcontroller</div>
+        <h4>STM32 peripheral</h4>
+        <p>Drives the RFID readers, the airlock gates, the touchscreen, and the reward pump.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Tech</h2>
+    <div class="chips">
+      <span>Python</span><span>Flask</span><span>Server-Sent Events</span><span>pyserial</span><span>HTML / CSS / JavaScript</span><span>STM32 (Arduino C++)</span><span>JSON config</span><span>CSV logging</span><span>RFID</span><span>MQTT</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure><img src="images/mouse-system-2.jpg" alt="The two-cage training rig connected by an RFID airlock" /><figcaption>The built system: two group-housing cages joined by the RFID airlock and gate actuators.</figcaption></figure>
+      <figure><img src="images/mouse-system-1.jpg" alt="Farbod presenting the project at the senior design showcase" /><figcaption>Presenting the system at the UC San Diego senior design showcase, dashboard running live.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>More</h2>
+    <p class="body">Want the full engineering story, including the hardware side my teammates built (the RFID readers, the guillotine-gate airlock, power, and enclosure)?</p>
+    <div class="links">
+      <a class="btn" href="https://sites.google.com/eng.ucsd.edu/mae156b-2026spring-team13/home" target="_blank" rel="noopener">Team project site</a>
+      <a class="btn ghost" href="https://github.com/Farbod97" target="_blank" rel="noopener">Code on GitHub</a>
+      <a class="btn ghost" href="index.html">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Farbod Haeri · San Diego, CA</div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
