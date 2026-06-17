@@ -173,9 +173,11 @@
 <a id="top"></a>
 <section class="hero">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide" style="background-image:url('images/hero-1.jpg')"></div>
-    <div class="slide" style="background-image:url('images/hero-2.jpg')"></div>
-    <div class="slide" style="background-image:url('images/hero-3.jpg');background-position:center 30%"></div>
+    <div class="slide" style="background-image:url('images/mae3-2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/mouse-system-2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/mouse-system-1.jpg');background-position:center 16%"></div>
+    <div class="slide" style="background-image:url('images/mae3-1.jpg');background-position:center 42%"></div>
+    <div class="slide" style="background-image:url('images/mae3-3.jpg');background-position:center 52%"></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -236,6 +238,7 @@
         <span class="role">CAD · Fabrication · Controls</span>
         <p>A six-rotor drone whose rotors sit at fixed angles, so it can move in all six directions without a gimbal. It's meant for tracking a target and searching tight spaces like tunnels. I'm taking it from CAD to flight: the SolidWorks design, a 3D-printed monocoque airframe, thrust-stand testing of ducted vs. un-ducted props, and a 6-DoF flight controller that I tune in MATLAB and test in our motion-capture room.</p>
         <div class="tags"><span class="tag">SolidWorks</span><span class="tag">MATLAB</span><span class="tag">6-DoF Control</span><span class="tag">3D Printing</span><span class="tag">UAV</span></div>
+        <a href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent-dk)">View code on GitHub</a>
       </article>
 
       <article class="card reveal">
@@ -246,7 +249,7 @@
         <span class="role">Software / UI Engineer</span>
         <p>My senior capstone for a UCSD neuroscience lab: an automated touchscreen rig that trains group-housed mice on the 5-choice task. I handled the software side of it, which meant an operator dashboard (HTML/CSS/JS) with live per-mouse metrics, a Python/Flask "brain" that runs through every training stage in order, and the data-logging plus the Wi-Fi/MQTT link to the hardware.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">MQTT</span><span class="tag">State Machines</span></div>
-        <a href="mouse-system.html" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--accent-dk)">See the full breakdown of this project</a>
+        <a href="mouse-system.html" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--accent-dk)">See the full breakdown</a> <span style="margin:0 4px;color:var(--muted)">·</span> <a href="https://github.com/Farbod97/Mouse-traning-system" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:var(--accent-dk)">View code</a>
       </article>
 
       <article class="card reveal">
@@ -267,6 +270,17 @@
         <span class="role">Mechanical Lead</span>
         <p>Led mechanical design on a small team: built the chassis and drivetrain from scratch and iterated through three revisions to take first place in the competition.</p>
         <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Rapid Prototyping</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="top">
+          <div><h4>Numerical Methods Toolkit</h4><div class="org">MAE 107, UC San Diego · MATLAB</div></div>
+          <div class="yr">2025</div>
+        </div>
+        <span class="role">MATLAB · Numerical Computing</span>
+        <p>A from-scratch set of the core numerical methods in MATLAB: ODE solvers (Euler and my own RK45), a shooting method, numerical integration (trapezoid and midpoint), finite-difference derivatives, and root finding (bisection and fixed-point iteration).</p>
+        <div class="tags"><span class="tag">MATLAB</span><span class="tag">RK45</span><span class="tag">Integration</span><span class="tag">Root Finding</span></div>
+        <a href="https://github.com/Farbod97/Numerical-Methods" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent-dk)">View code on GitHub</a>
       </article>
 
     </div>
@@ -331,7 +345,6 @@
     <div class="masonry">
       <figure><img loading="lazy" src="images/mae3-2.jpg" alt="The MAE3 robot" /><figcaption>The MAE3 robot, 3D-printed and built from scratch.</figcaption></figure>
       <figure><img loading="lazy" src="images/mouse-system-2.jpg" alt="The automated mouse-training rig" /><figcaption>The automated mouse-training rig (senior design).</figcaption></figure>
-      <figure><img loading="lazy" src="images/mae3-4.jpg" alt="The team after taking first place" /><figcaption>The team after first place at the MAE3 competition.</figcaption></figure>
       <figure><img loading="lazy" src="images/mae3-1.jpg" alt="Close-up of the MAE3 robot" /><figcaption>The drivetrain and gripper, up close.</figcaption></figure>
       <figure><img loading="lazy" src="images/mouse-system-1.jpg" alt="Presenting the senior design project" /><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
       <figure><img loading="lazy" src="images/mae3-3.jpg" alt="The MAE3 robot with its first-place certificate" /><figcaption>First place, MAE3 Fall 2024.</figcaption></figure>
@@ -363,7 +376,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
   function closeMenu(){document.getElementById('links').classList.remove('open');}
   // GitHub link placeholder, set once username is known
-  var GH = ""; // e.g. "https://github.com/yourusername"
+  var GH = "https://github.com/Farbod97";
   var gh = document.getElementById('ghlink');
   if(GH){ gh.href = GH; } else { gh.style.display='none'; }
   // reveal on scroll
