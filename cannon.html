@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Machined Mini Cannon | Farbod Haeri</title>
+<meta name="description" content="A working scale cannon machined from solid aluminum at UC San Diego: SolidWorks design, dimensioned and toleranced drawings, and parts turned and milled on the lathe and Haas CNC mills." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#ffffff;--bg-alt:#f5f8fc;--ink:#0d1a2d;--muted:#5a6b81;--line:#e3e9f1;
+    --accent:#2f6df6;--accent-dk:#1c4fd1;--chip:#eaf1fe;--radius:16px;--max:900px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
+
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:17px}
+  .brand span{color:var(--accent)}
+  .back{font-size:14px;font-weight:500;color:var(--muted)}
+  .back:hover{color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden;background:#0b1730;color:#eaf1ff}
+  .hero .bg{position:absolute;inset:0;background:url('images/cannon-1.jpg') center/cover;z-index:0}
+  .hero .tint{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(8,12,20,.82),rgba(10,16,30,.72))}
+  .hero .wrap{position:relative;z-index:2;padding:66px 24px 60px;text-shadow:0 1px 16px rgba(0,0,0,.4)}
+  .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8fb0ff}
+  .hero h1{font-size:clamp(30px,5.4vw,48px);line-height:1.05;letter-spacing:-.025em;font-weight:800;margin:12px 0 14px}
+  .hero p{max-width:620px;color:#c4d4ef;font-size:17px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:22px}
+  .meta span{font-size:12.5px;font-weight:500;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#eaf1ff;padding:5px 11px;border-radius:20px}
+
+  section{padding:46px 0}
+  section.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:16px}
+  h3{font-size:21px;letter-spacing:-.01em;margin:0 0 8px}
+  p.body{font-size:16.5px;color:#33415a;margin-bottom:16px}
+  .lede{font-size:18px;color:#26344a}
+  strong{font-weight:600}
+
+  .built{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+  .built .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .built .item h4{font-size:16px;margin-bottom:5px}
+  .built .item code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent-dk);background:var(--chip);padding:1px 6px;border-radius:5px}
+  .built .item p{font-size:14.5px;color:#46556e;margin-top:7px}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:6px 0 4px}
+  .flow .node{flex:1 1 180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .flow .node .k{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+  .flow .node h4{font-size:16px;margin:4px 0 4px}
+  .flow .node p{font-size:13.5px;color:#46556e}
+  .flow .link{display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);font-weight:500;padding:0 2px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .chips span{font-size:13.5px;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:8px;color:#33415a}
+
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-top:6px}
+  .ba figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .ba img{display:block;width:100%;height:250px;object-fit:cover}
+  .ba figcaption{font-size:13px;color:var(--muted);padding:9px 13px}
+  .ba .arrow{font-size:26px;color:var(--accent);font-weight:800}
+  @media(max-width:640px){.ba{grid-template-columns:1fr}.ba .arrow{transform:rotate(90deg);justify-self:center}}
+
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}
+  .gallery figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
+  .gallery figure:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(13,26,45,.45)}
+  .gallery img{display:block;width:100%;height:auto}
+  .gallery figcaption{font-size:13px;color:var(--muted);padding:10px 14px}
+
+  .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:10px;transition:background .18s ease,transform .18s ease,box-shadow .28s ease}
+  .btn:hover{background:var(--accent-dk);transform:translateY(-1px);box-shadow:0 9px 26px -8px rgba(47,109,246,.62)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{background:var(--bg-alt);box-shadow:0 8px 22px -10px rgba(13,26,45,.28)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13.5px;text-align:center}
+
+  @media(max-width:720px){.built,.gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Farbod<span>.</span>Haeri</a>
+    <a class="back" href="index.html">Back to home</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="tint" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Machine Shop Project · UC San Diego</p>
+    <h1>Machined Mini Cannon</h1>
+    <p>A working scale cannon machined from solid aluminum. This is where I learned to take a part the whole way, from a CAD model and a dimensioned drawing to finished metal.</p>
+    <div class="meta">
+      <span>Team project</span>
+      <span>CAD + CNC Machining</span>
+      <span>Material: Aluminum</span>
+      <span>Hand-finished</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The build</h2>
+    <p class="body lede">The brief was simple to say and not simple to do: design and manufacture a small working cannon. It doubled as a crash course in the whole make-a-part workflow.</p>
+    <p class="body">We modeled every component in SolidWorks, produced a dimensioned and toleranced engineering drawing for each one, then machined them from aluminum and assembled the finished piece. It is small, but everything that goes into a real machined assembly is in there: turning, milling, drilling, tapping, threading, and fits that actually have to line up at the end. It is the project that turned CAD from a drawing tool into something I could hold.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>The parts</h2>
+    <p class="body">Four main pieces, each drawn and made to spec.</p>
+    <div class="built">
+      <div class="item">
+        <h4>Turned barrel</h4>
+        <code>Lathe</code>
+        <p>A tapered barrel turned from aluminum round stock and bored down the center, with a 3/4-16 UNF thread cut on the breech end to take the cap.</p>
+      </div>
+      <div class="item">
+        <h4>Trunnion upright</h4>
+        <code>CNC Mill</code>
+        <p>The milled stand the barrel pivots in, with a bolt-circle of holes set every 15 degrees so the barrel angle can be pinned and changed.</p>
+      </div>
+      <div class="item">
+        <h4>Base plate</h4>
+        <code>CNC Mill</code>
+        <p>The base the upright bolts to, with counterbored mounting holes and a chamfered edge for a clean finish.</p>
+      </div>
+      <div class="item">
+        <h4>Pivot pin + hardware</h4>
+        <code>5-40 UNC</code>
+        <p>The pin the barrel rotates on, plus the small threaded hardware that ties the assembly together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How it was made</h2>
+    <div class="flow">
+      <div class="node">
+        <div class="k">Design</div>
+        <h4>SolidWorks</h4>
+        <p>Every part modeled, then checked as an assembly so the fits worked before any metal was cut.</p>
+      </div>
+      <div class="link">becomes</div>
+      <div class="node">
+        <div class="k">Drawings</div>
+        <h4>Dimensioned + toleranced</h4>
+        <p>A full drawing for each part: dimensions, tolerances, threads, and finish callouts.</p>
+      </div>
+      <div class="link">made on</div>
+      <div class="node">
+        <div class="k">Lathe + Haas CNC</div>
+        <h4>Turn, mill, tap</h4>
+        <p>Turned on a manual and Tormach lathe; milled, drilled, and tapped on Haas Mini Mill and VF2.</p>
+      </div>
+      <div class="link">then</div>
+      <div class="node">
+        <div class="k">Finish</div>
+        <h4>Assemble + polish</h4>
+        <p>Deburred, fit-checked, assembled, and polished into the finished cannon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>From model to metal</h2>
+    <p class="body">The SolidWorks assembly on the left, the machined and polished part on the right.</p>
+    <div class="ba">
+      <figure><img loading="lazy" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly of the cannon" /><figcaption>The SolidWorks assembly.</figcaption></figure>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+      <figure><img loading="lazy" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon" /><figcaption>The finished part, turned and polished.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="chips">
+      <span>SolidWorks</span><span>Engineering Drawings</span><span>GD&amp;T</span><span>Manual Lathe</span><span>Tormach Lathe</span><span>Haas CNC Mill</span><span>Turning</span><span>Milling</span><span>Drilling &amp; Tapping</span><span>Threading</span><span>Aluminum</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure><img loading="lazy" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon with ball-bearing ammo" /><figcaption>The finished cannon, with a stack of ball bearings for scale.</figcaption></figure>
+      <figure><img loading="lazy" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /><figcaption>Side profile: turned barrel on the milled trunnion and base.</figcaption></figure>
+      <figure><img loading="lazy" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly render of the cannon" /><figcaption>The SolidWorks assembly it started from.</figcaption></figure>
+      <figure><img loading="lazy" src="images/cannon-drawing.jpg" alt="A dimensioned engineering drawing of the cannon barrel and its thread" /><figcaption>One of the part drawings: the barrel and its 3/4-16 UNF thread.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>More</h2>
+    <p class="body">There is more of my work, from the MAE3 robot to the hexacopter, on the main site.</p>
+    <div class="links">
+      <a class="btn ghost" href="index.html">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Farbod Haeri · San Diego, CA</div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

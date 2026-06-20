@@ -45,7 +45,7 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
   .brand{font-weight:800;letter-spacing:-.02em;font-size:18px}
   .brand span{color:var(--accent)}
-  nav.links{display:flex;align-items:center;gap:28px}
+  nav.links{display:flex;align-items:center;gap:24px}
   nav.links a{font-size:14.5px;font-weight:500;color:var(--muted);transition:color .15s}
   nav.links a:hover{color:var(--ink)}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
@@ -91,7 +91,7 @@
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px}
   .sec-head .num{font-size:14px;color:var(--accent);font-weight:600}
   .sec-head h3{font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;font-weight:800}
-  .lead-2{max-width:640px;color:var(--muted);font-size:17px;margin-top:-18px;margin-bottom:30px}
+  .lead-2{max-width:660px;color:var(--muted);font-size:17px;margin-top:-18px;margin-bottom:30px}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:46px}
@@ -101,6 +101,23 @@
   .about-card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;font-size:14.5px}
   .about-card dt{color:var(--muted)}
   .about-card dd{font-weight:600;text-align:right}
+
+  /* JOURNEY */
+  .journey{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .step{display:flex;flex-direction:column}
+  .step-img{height:118px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#eef3fa}
+  .step-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .step:hover .step-img img{transform:scale(1.06)}
+  .step .yr{align-self:flex-start;margin:13px 0 6px;font-size:11.5px;font-weight:700;color:var(--accent-dk);
+    background:var(--chip);padding:3px 9px;border-radius:20px}
+  .step h4{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .step p{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5}
+  .step.soon .step-img{display:flex;align-items:center;justify-content:center;border-style:dashed;border-color:#cfe0ff;
+    background:repeating-linear-gradient(135deg,#eef4ff,#eef4ff 10px,#f6f9ff 10px,#f6f9ff 20px);
+    color:var(--accent-dk);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:11.5px}
+  @media(max-width:900px){.journey{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:620px){.journey{grid-template-columns:1fr 1fr}}
+  @media(max-width:420px){.journey{grid-template-columns:1fr}}
 
   /* PROJECTS */
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
@@ -129,6 +146,13 @@
   .codelink{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--accent-dk);
     transition:color .15s}
   .codelink:hover{color:var(--accent)}
+  /* coming-soon card */
+  .card.soon{border-color:#cfe0ff;background:linear-gradient(180deg,#ffffff,#fbfdff)}
+  .soon-img{height:210px;display:flex;align-items:center;justify-content:center;
+    background:repeating-linear-gradient(135deg,#eef4ff,#eef4ff 12px,#f6f9ff 12px,#f6f9ff 24px);
+    border-bottom:1px dashed #cfe0ff;color:var(--accent-dk);font-weight:700;
+    text-transform:uppercase;letter-spacing:.09em;font-size:13px}
+  .role.building{background:#dcebff;color:var(--accent-dk)}
 
   /* EXPERIENCE */
   .timeline{display:flex;flex-direction:column;gap:0}
@@ -149,6 +173,12 @@
   .chips span{font-size:13.5px;background:#f1f5fb;border:1px solid var(--line);padding:5px 11px;border-radius:8px;color:#33415a}
 
   /* GALLERY */
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:0 0 26px}
+  .ba figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .ba img{display:block;width:100%;height:240px;object-fit:cover}
+  .ba figcaption{font-size:12.5px;color:var(--muted);padding:9px 13px}
+  .ba .arrow{font-size:26px;color:var(--accent);font-weight:800}
+  @media(max-width:640px){.ba{grid-template-columns:1fr}.ba .arrow{transform:rotate(90deg);justify-self:center}}
   .masonry{column-count:3;column-gap:14px}
   .masonry figure{break-inside:avoid;margin:0 0 14px;border:1px solid var(--line);border-radius:14px;
     overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
@@ -201,6 +231,7 @@
     <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
     <nav class="links" id="links">
       <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#journey" onclick="closeMenu()">Journey</a>
       <a href="#projects" onclick="closeMenu()">Projects</a>
       <a href="#experience" onclick="closeMenu()">Experience</a>
       <a href="#skills" onclick="closeMenu()">Skills</a>
@@ -213,11 +244,11 @@
 <a id="top"></a>
 <section class="hero">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide" style="background-image:url('images/drone-green-1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/drone-final-side.jpg')"></div>
+    <div class="slide" style="background-image:url('images/cannon-1.jpg')"></div>
     <div class="slide" style="background-image:url('images/mouse-rig.jpg')"></div>
-    <div class="slide" style="background-image:url('images/drone-green-top.jpg')"></div>
-    <div class="slide" style="background-image:url('images/drone-build-top.jpg')"></div>
-    <div class="slide" style="background-image:url('images/drone-green-2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/drone-final-top2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/mae3-2.jpg')"></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -246,8 +277,8 @@
     <div class="about-grid">
       <div class="reveal">
         <p>I'm a Mechanical Engineering student at UC San Diego, on the combined BS/MS track, most interested in robotics, controls, and the hands-on side of hardware.</p>
-        <p>Right now I'm in Prof. Thomas Bewley's lab, designing and flying a fully-actuated hexacopter. Before that I built metrology and fatigue-testing pipelines in Prof. Maziar Ghazinejad's materials lab, and earlier I spent two years at Apple's Elk Grove facility working on materials and new-product builds.</p>
-        <p>What I like most is owning a project end to end: designing it, building it, writing the code that runs it, then testing until it actually behaves. That make-it-work part is the side of engineering I care about.</p>
+        <p>I started by machining single parts in the shop and kept reaching for bigger systems. Right now I'm in Prof. Thomas Bewley's lab, designing and flying a fully-actuated hexacopter. Before that I built metrology and fatigue-testing pipelines in Prof. Maziar Ghazinejad's materials lab, and earlier I spent two years at Apple's Elk Grove facility working on materials and new-product builds.</p>
+        <p>What I like most is owning a project end to end: designing it, building it, writing the code that runs it, then testing until it actually behaves. That make-it-work part is the side of engineering I care about. Next up, I'm building an autonomous vehicle.</p>
       </div>
       <div class="about-card reveal">
         <h4>Quick Facts</h4>
@@ -263,24 +294,59 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="alt">
+<!-- JOURNEY -->
+<section id="journey" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">02</span><h3>Projects</h3></div>
-    <p class="lead-2 reveal">A few things I've designed, built, and coded, from a six-rotor drone to an automated neuroscience rig.</p>
+    <div class="sec-head reveal"><span class="num">02</span><h3>The build-up</h3></div>
+    <p class="lead-2 reveal">Every project has been a step up from the last, from machining one aluminum part to designing and flying a whole drone. Here is the path so far.</p>
+    <div class="journey">
+      <div class="step reveal">
+        <div class="step-img"><img loading="lazy" src="images/cannon-1.jpg" alt="Machined aluminum mini cannon" /></div>
+        <h4>Where it started</h4>
+        <p>A working aluminum cannon, turned and milled in the machine shop. This is where the hands-on building began.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-img"><img loading="lazy" src="images/mae3-2.jpg" alt="Yellow MAE3 competition robot" /></div>
+        <h4>Won MAE3</h4>
+        <p>Designed and built a competition robot from scratch and took first place.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-img"><img loading="lazy" src="images/mouse-rig.jpg" alt="Automated mouse-training rig" /></div>
+        <h4>Lab systems</h4>
+        <p>A senior-design neuroscience rig and materials-metrology pipelines: the hardware and the software to run it.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-img"><img loading="lazy" src="images/drone-final-persp.jpg" alt="Finished fixed-tilt hexacopter" /></div>
+        <h4>Built a drone</h4>
+        <p>A fully-actuated hexacopter taken from CAD to a flight-ready aircraft with its own controller.</p>
+      </div>
+      <div class="step soon reveal">
+        <div class="step-img">In progress</div>
+        <h4>Autonomous vehicle</h4>
+        <p>Building a self-driving vehicle now, the mechanical side and the control software together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">03</span><h3>Projects</h3></div>
+    <p class="lead-2 reveal">A few things I've designed, built, and coded, from a machined cannon to a six-rotor drone and an automated neuroscience rig.</p>
     <div class="grid">
 
       <article class="card reveal">
-        <div class="card-img"><img loading="lazy" src="images/drone-green-1.jpg" alt="The fixed-tilt hexacopter with green flight props mounted, on an optical bench" /></div>
+        <div class="card-img"><img loading="lazy" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></div>
         <div class="card-body">
           <div class="top">
             <div><h4>Fixed-Tilt Hexacopter</h4><div class="org">UAV Controls &amp; Robotics · Bewley Lab, UCSD</div></div>
             <div class="yr">Since 2026</div>
           </div>
           <span class="role">CAD · Fabrication · Controls</span>
-          <p>A six-rotor drone whose rotors sit at fixed angles, so it can move in all six directions without a gimbal. It's meant for tracking a target and searching tight spaces like tunnels. I'm taking it from CAD to flight: the SolidWorks design, a 3D-printed monocoque airframe, thrust-stand testing of ducted vs. un-ducted props, and a 6-DoF flight controller that I tune in MATLAB and test in our motion-capture room.</p>
+          <p>A six-rotor drone whose rotors sit at fixed angles, so it can move in all six directions without a gimbal. It's meant for tracking a target and searching tight spaces like tunnels. I took it from CAD to a flight-ready build: the SolidWorks design, a 3D-printed monocoque airframe, thrust-stand testing of ducted vs. un-ducted props, and a 6-DoF flight controller that I tune in MATLAB and test in our motion-capture room.</p>
           <div class="tags"><span class="tag">SolidWorks</span><span class="tag">MATLAB</span><span class="tag">6-DoF Control</span><span class="tag">3D Printing</span><span class="tag">UAV</span></div>
-          <a class="codelink" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">View code on GitHub</a>
+          <a class="codelink" href="drone.html">See the full breakdown</a> <span style="margin:0 4px;color:var(--muted)">·</span> <a class="codelink" style="margin-top:0" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">View code</a>
         </div>
       </article>
 
@@ -298,14 +364,29 @@
         </div>
       </article>
 
-      <article class="card text-only reveal">
+      <article class="card reveal">
+        <div class="card-img"><img loading="lazy" src="images/cannon-2.jpg" alt="The machined aluminum scale cannon on its stand" /></div>
+        <div class="card-body">
+          <div class="top">
+            <div><h4>Machined Mini Cannon</h4><div class="org">Machine Shop Project · UC San Diego</div></div>
+            <div class="yr">2024</div>
+          </div>
+          <span class="role">CAD · CNC Machining</span>
+          <p>A team machine-shop build, and where I learned to actually make parts: a working scale cannon turned and milled from aluminum. We modeled every piece in SolidWorks, drew dimensioned and toleranced engineering drawings, then cut them on a manual lathe, a Tormach lathe, and Haas CNC mills before assembling and polishing the finished cannon.</p>
+          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">Lathe</span><span class="tag">CNC Mill</span><span class="tag">GD&amp;T</span><span class="tag">Drawings</span></div>
+          <a class="codelink" href="cannon.html">See the full breakdown</a>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-img contain"><img loading="lazy" src="images/mae3-2.jpg" alt="The yellow 3D-printed MAE3 competition robot, full view" /></div>
         <div class="card-body">
           <div class="top">
             <div><h4>MAE3 Autonomous Robot</h4><div class="org">1st Place · UCSD MAE3 Robot Competition</div></div>
             <div class="yr">Fall 2024</div>
           </div>
           <span class="role">Mechanical Lead</span>
-          <p>Led mechanical design on a small team: built the chassis and drivetrain from scratch and iterated through three revisions to take first place in the competition. The finished robot is in the gallery below.</p>
+          <p>Led mechanical design on a small team: built the chassis and drivetrain from scratch and iterated through three revisions to take first place in the competition.</p>
           <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Rapid Prototyping</span></div>
         </div>
       </article>
@@ -335,14 +416,27 @@
         </div>
       </article>
 
+      <article class="card soon reveal">
+        <div class="soon-img">Coming soon</div>
+        <div class="card-body">
+          <div class="top">
+            <div><h4>Autonomous Vehicle</h4><div class="org">Personal Project · In progress</div></div>
+            <div class="yr">In progress</div>
+          </div>
+          <span class="role building">Building now</span>
+          <p>My next build: a self-driving vehicle that brings together the mechanical design, the sensors, and the control and perception software. It's the natural next step after the drone, trading flight for the road. I'll post the full write-up here as it comes together.</p>
+          <div class="tags"><span class="tag">Controls</span><span class="tag">Sensors</span><span class="tag">Perception</span><span class="tag">Path Planning</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">03</span><h3>Experience</h3></div>
+    <div class="sec-head reveal"><span class="num">04</span><h3>Experience</h3></div>
     <div class="timeline">
       <div class="row reveal">
         <div class="when">Jan 2026 to present</div>
@@ -373,14 +467,14 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="alt">
+<section id="skills">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">04</span><h3>Skills</h3></div>
+    <div class="sec-head reveal"><span class="num">05</span><h3>Skills</h3></div>
     <div class="skills">
       <div class="skillcard reveal"><h4>CAD / CAE</h4><div class="chips">
         <span>SolidWorks</span><span>Simulation</span><span>PDM</span><span>Fusion 360</span><span>NX</span><span>AutoCAD</span><span>ANSYS (FEA)</span></div></div>
       <div class="skillcard reveal"><h4>Manufacturing</h4><div class="chips">
-        <span>CNC Mill</span><span>Waterjet</span><span>Laser Cutter</span><span>FDM 3D Printing</span><span>Soldering (THT + SMD)</span></div></div>
+        <span>Manual + CNC Lathe</span><span>CNC Mill</span><span>Waterjet</span><span>Laser Cutter</span><span>FDM 3D Printing</span><span>Soldering (THT + SMD)</span></div></div>
       <div class="skillcard reveal"><h4>Programming</h4><div class="chips">
         <span>Python</span><span>MATLAB</span><span>Java</span><span>HTML / CSS / JS</span><span>Flask</span></div></div>
       <div class="skillcard reveal"><h4>Controls &amp; Test</h4><div class="chips">
@@ -390,20 +484,26 @@
 </section>
 
 <!-- GALLERY -->
-<section id="gallery">
+<section id="gallery" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">05</span><h3>Gallery</h3></div>
-    <p class="lead-2 reveal">A few shots of the builds and the work behind them.</p>
+    <div class="sec-head reveal"><span class="num">06</span><h3>Gallery</h3></div>
+    <p class="lead-2 reveal">A few shots of the builds and the work behind them, including how the drone went from a bare frame to flight-ready.</p>
+    <div class="ba reveal">
+      <figure><img loading="lazy" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /><figcaption>During the build: bare airframe, electronics exposed, no props yet.</figcaption></figure>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+      <figure><img loading="lazy" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /><figcaption>Finished: props on, fully wired, and flight-ready.</figcaption></figure>
+    </div>
     <div class="masonry">
-      <figure class="reveal"><img loading="lazy" src="images/drone-green-1.jpg" alt="The hexacopter with flight props mounted, on the optics bench" /><figcaption>The hexacopter with its flight props on, on the optics bench.</figcaption></figure>
+      <figure class="reveal"><img loading="lazy" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /><figcaption>The finished hexacopter, back in the lab where it was built.</figcaption></figure>
+      <figure class="reveal"><img loading="lazy" src="images/cannon-1.jpg" alt="The machined aluminum mini cannon with ball-bearing ammo" /><figcaption>The machined aluminum cannon, where the hands-on work started.</figcaption></figure>
       <figure class="reveal"><img loading="lazy" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /><figcaption>The full automated mouse-training rig: chambers, touchscreens, and control box.</figcaption></figure>
+      <figure class="reveal"><img loading="lazy" src="images/drone-final-top.jpg" alt="Top-down view of the finished six-rotor drone" /><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
       <figure class="reveal"><img loading="lazy" src="images/mae3-2.jpg" alt="The yellow MAE3 competition robot, full view" /><figcaption>The MAE3 robot, 3D-printed and built from scratch.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/drone-green-top.jpg" alt="Top-down view of the six ducted rotors" /><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
+      <figure class="reveal"><img loading="lazy" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /><figcaption>Cannon, side profile: turned barrel on a milled stand and base.</figcaption></figure>
       <figure class="reveal"><img loading="lazy" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /><figcaption>Two touchscreen modules linked by the transfer tube.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/drone-build-1.jpg" alt="The drone airframe during the build, flight controller exposed" /><figcaption>Mid-build: the flight controller and wiring before the props went on.</figcaption></figure>
+      <figure class="reveal"><img loading="lazy" src="images/drone-final-side.jpg" alt="Side view of the finished drone" /><figcaption>The ducted-rotor profile, up close.</figcaption></figure>
       <figure class="reveal"><img loading="lazy" src="images/mae3-3.jpg" alt="The MAE3 robot with its first-place certificate" /><figcaption>First place, MAE3 Fall 2024.</figcaption></figure>
       <figure class="reveal"><img loading="lazy" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/drone-lab.jpg" alt="The drone on a stool in the lab during testing" /><figcaption>Bench testing in the lab.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -438,7 +538,7 @@
   if(GH){ gh.href = GH; } else { gh.style.display='none'; }
 
   // stagger the reveals within each group so they cascade as you scroll
-  document.querySelectorAll('.grid, .skills, .masonry, .timeline, .about-grid').forEach(function(group){
+  document.querySelectorAll('.grid, .skills, .masonry, .timeline, .about-grid, .journey').forEach(function(group){
     var kids = group.querySelectorAll('.reveal');
     kids.forEach(function(el, i){ el.style.transitionDelay = Math.min(i * 0.08, 0.4) + 's'; });
   });
