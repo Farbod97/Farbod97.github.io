@@ -67,8 +67,7 @@
     <a class="brand" href="#top">Farbod<span>.</span>Haeri</a>
     <nav class="links" id="links" aria-label="Main">
       <a href="#about">About</a>
-      <a href="#journey">Journey</a>
-      <a href="#projects">Projects</a>
+      <a href="#projects">The Build-Up</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#gallery">Gallery</a>
@@ -146,168 +145,70 @@
   </div>
 </section>
 
-<!-- JOURNEY -->
-<section id="journey" class="alt">
+<!-- THE BUILD-UP: projects that led one thing to another -->
+<a id="journey"></a>
+<section id="projects" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">02</span><h3>The build-up</h3></div>
-    <p class="lead-2 reveal">Every project has been a step up from the last, from machining one aluminum part to designing and flying a whole drone. Here is the path so far.</p>
+    <div class="sec-head reveal"><span class="num">02</span><h3>The Build-Up</h3></div>
+    <p class="lead-2 reveal">Projects that led one thing to another, from machining a single aluminum part to flying a whole drone. Click any step to unfold the full story — what I built, how I built it, and the photos to prove it.</p>
     <div class="journey">
-      <div class="step reveal">
+
+      <div class="step reveal" data-panel="xp-cannon" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-cannon">
         <div class="step-img"><picture>
           <source srcset="images/cannon-1.webp" type="image/webp" />
           <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="Machined aluminum mini cannon" /></picture></div>
-        <h4>Where it started</h4>
-        <p>A working aluminum cannon, turned and milled in the machine shop. This is where the hands-on building began.</p>
+        <span class="yr">2024</span>
+        <h4>Where it started <span class="chev" aria-hidden="true">+</span></h4>
+        <p>A working aluminum cannon, turned and milled in the machine shop.</p>
       </div>
-      <div class="step reveal">
+
+      <div class="step reveal" data-panel="xp-mae3" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-mae3">
         <div class="step-img"><picture>
           <source srcset="images/mae3-2.webp" type="image/webp" />
           <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="Yellow MAE3 competition robot" /></picture></div>
-        <h4>Won MAE3</h4>
-        <p>Designed and built a competition robot from scratch and took first place.</p>
+        <span class="yr">Fall 2024</span>
+        <h4>Won MAE3 <span class="chev" aria-hidden="true">+</span></h4>
+        <p>A competition robot built from scratch that took first place.</p>
       </div>
-      <div class="step reveal">
+
+      <div class="step reveal" data-panel="xp-metrology" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-metrology">
+        <div class="step-img tile" aria-hidden="true">&sigma;&ndash;N</div>
+        <span class="yr">2025</span>
+        <h4>Materials &amp; metrology <span class="chev" aria-hidden="true">+</span></h4>
+        <p>Fatigue-life data pipelines in an advanced-materials lab.</p>
+      </div>
+
+      <div class="step reveal" data-panel="xp-software" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-software">
+        <div class="step-img tile" aria-hidden="true">{ code }</div>
+        <span class="yr">2025&ndash;26</span>
+        <h4>The software side <span class="chev" aria-hidden="true">+</span></h4>
+        <p>Numerical methods from scratch, then a full AI trading system.</p>
+      </div>
+
+      <div class="step reveal" data-panel="xp-mouse" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-mouse">
         <div class="step-img"><picture>
           <source srcset="images/mouse-rig.webp" type="image/webp" />
           <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="Automated mouse-training rig" /></picture></div>
-        <h4>Lab systems</h4>
-        <p>A senior-design neuroscience rig and materials-metrology pipelines: the hardware and the software to run it.</p>
+        <span class="yr">2026</span>
+        <h4>Lab systems <span class="chev" aria-hidden="true">+</span></h4>
+        <p>An automated neuroscience rig — I built the software that runs it.</p>
       </div>
-      <div class="step reveal">
+
+      <div class="step reveal" data-panel="xp-drone" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-drone">
         <div class="step-img"><picture>
           <source srcset="images/drone-final-persp.webp" type="image/webp" />
           <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="Finished fixed-tilt hexacopter" /></picture></div>
-        <h4>Built a drone</h4>
-        <p>A fully-actuated hexacopter taken from CAD to a flight-ready aircraft with its own controller.</p>
+        <span class="yr">2026</span>
+        <h4>Built a drone <span class="chev" aria-hidden="true">+</span></h4>
+        <p>A fully-actuated hexacopter taken from CAD to flight-ready.</p>
       </div>
-      <div class="step soon reveal">
-        <div class="step-img">In progress</div>
-        <h4>Autonomous car</h4>
-        <p>Building a self-driving robocar in UCSD's MAE/ECE 148 right now: ROS 2, computer vision, and the control stack.</p>
+
+      <div class="step reveal" data-panel="xp-car" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-car">
+        <div class="step-img tile" aria-hidden="true">In progress</div>
+        <span class="yr">Now</span>
+        <h4>Autonomous car <span class="chev" aria-hidden="true">+</span></h4>
+        <p>A self-driving robocar in UCSD's MAE/ECE 148: ROS 2, vision, controls.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="num">03</span><h3>Projects</h3></div>
-    <p class="lead-2 reveal">A few things I've designed, built, and coded, from a machined cannon to a six-rotor drone and an automated neuroscience rig.</p>
-    <div class="grid">
-
-      <article class="card reveal">
-        <div class="card-img"><picture>
-          <source srcset="images/drone-final-persp.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></picture></div>
-        <div class="card-body">
-          <div class="top">
-            <div><h4>Fixed-Tilt Hexacopter</h4><div class="org">UAV Controls &amp; Robotics · Bewley Lab, UCSD</div></div>
-            <div class="yr">Since 2026</div>
-          </div>
-          <span class="role">CAD · Fabrication · Controls</span>
-          <p>A six-rotor drone whose rotors sit at fixed angles, so it can move in all six directions without a gimbal. It's meant for tracking a target and searching tight spaces like tunnels. I took it from CAD to a flight-ready build: the SolidWorks design, a 3D-printed monocoque airframe, thrust-stand testing of ducted vs. un-ducted props, and a 6-DoF flight controller that I tune in MATLAB and test in our motion-capture room.</p>
-          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">MATLAB</span><span class="tag">6-DoF Control</span><span class="tag">3D Printing</span><span class="tag">UAV</span></div>
-          <div class="card-links"><a class="codelink" href="drone.html">See the full breakdown</a><a class="codelink" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">View code</a></div>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-img"><picture>
-          <source srcset="images/mouse-rig.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse cognitive-training rig: two chambers, touchscreen modules, and the control box" /></picture></div>
-        <div class="card-body">
-          <div class="top">
-            <div><h4>Automated Mouse Cognitive-Training System</h4><div class="org">Senior Design · Jared Young Lab, UCSD</div></div>
-            <div class="yr">2026</div>
-          </div>
-          <span class="role">Software / UI Engineer</span>
-          <p>My senior capstone for a UCSD neuroscience lab: an automated touchscreen rig that trains group-housed mice on the 5-choice task. I handled the software side of it, which meant an operator dashboard (HTML/CSS/JS) with live per-mouse metrics, a Python/Flask "brain" that runs through every training stage in order, and the data-logging plus the Wi-Fi/MQTT link to the hardware.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">MQTT</span><span class="tag">State Machines</span></div>
-          <div class="card-links"><a class="codelink" href="mouse-system.html">See the full breakdown</a><a class="codelink" href="https://github.com/Farbod97/Mouse-traning-system" target="_blank" rel="noopener">View code</a></div>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-img"><picture>
-          <source srcset="images/cannon-2.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="The machined aluminum scale cannon on its stand" /></picture></div>
-        <div class="card-body">
-          <div class="top">
-            <div><h4>Machined Mini Cannon</h4><div class="org">Machine Shop Project · UC San Diego</div></div>
-            <div class="yr">2024</div>
-          </div>
-          <span class="role">CAD · CNC Machining</span>
-          <p>A team machine-shop build, and where I learned to actually make parts: a working scale cannon turned and milled from aluminum. We modeled every piece in SolidWorks, drew dimensioned and toleranced engineering drawings, then cut them on a manual lathe, a Tormach lathe, and Haas CNC mills before assembling and polishing the finished cannon.</p>
-          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">Lathe</span><span class="tag">CNC Mill</span><span class="tag">GD&amp;T</span><span class="tag">Drawings</span></div>
-          <a class="codelink" href="cannon.html">See the full breakdown</a>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-img contain"><picture>
-          <source srcset="images/mae3-2.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow 3D-printed MAE3 competition robot, full view" /></picture></div>
-        <div class="card-body">
-          <div class="top">
-            <div><h4>MAE3 Autonomous Robot</h4><div class="org">1st Place · UCSD MAE3 Robot Competition</div></div>
-            <div class="yr">Fall 2024</div>
-          </div>
-          <span class="role">Mechanical Lead</span>
-          <p>Led mechanical design on a small team: built the chassis and drivetrain from scratch and iterated through three revisions to take first place in the competition.</p>
-          <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Rapid Prototyping</span></div>
-        </div>
-      </article>
-
-      <article class="card text-only reveal">
-        <div class="card-body">
-          <div class="top">
-            <div><h4>Advanced Materials Metrology</h4><div class="org">Ghazinejad Lab, UCSD</div></div>
-            <div class="yr">2025</div>
-          </div>
-          <span class="role">Test &amp; Data Pipelines</span>
-          <p>Turning raw optical metrology into fatigue-life data for additively-manufactured steels. I built MATLAB pipelines that quantify defect fractions and surface roughness, designed and machined test fixtures, and ran fatigue tests across material variants while keeping the datasets clean and traceable.</p>
-          <div class="tags"><span class="tag">MATLAB</span><span class="tag">Machine Vision</span><span class="tag">Metrology</span><span class="tag">CNC / Waterjet</span></div>
-        </div>
-      </article>
-
-      <article class="card text-only reveal">
-        <div class="card-body">
-          <div class="top">
-            <div><h4>Numerical Methods Toolkit</h4><div class="org">MAE 107, UC San Diego · MATLAB</div></div>
-            <div class="yr">2025</div>
-          </div>
-          <span class="role">MATLAB · Numerical Computing</span>
-          <p>A from-scratch set of the core numerical methods in MATLAB: ODE solvers (Euler and my own RK45), a shooting method, numerical integration (trapezoid and midpoint), finite-difference derivatives, and root finding (bisection and fixed-point iteration).</p>
-          <div class="tags"><span class="tag">MATLAB</span><span class="tag">RK45</span><span class="tag">Integration</span><span class="tag">Root Finding</span></div>
-          <a class="codelink" href="https://github.com/Farbod97/Numerical-Methods" target="_blank" rel="noopener">View code on GitHub</a>
-        </div>
-      </article>
-
-      <article class="card text-only reveal">
-        <div class="card-body">
-          <div class="top">
-            <div><h4>StockAI — AI Trading Research System</h4><div class="org">Personal Project</div></div>
-            <div class="yr">2026</div>
-          </div>
-          <span class="role">Software · AI Systems</span>
-          <p>A personal deep-dive into modern software and AI tooling: an automated trading research system that ingests public "smart money" signals (congressional trades, insider filings, 13F whales, activist positions), scores them, and paper-trades a risk-gated portfolio end to end, with backtesting behind every rule. The repo is private since it trades a live account, but I'm happy to walk through the architecture.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">AI Agents</span><span class="tag">REST APIs</span><span class="tag">Backtesting</span><span class="tag">Risk Management</span></div>
-        </div>
-      </article>
-
-      <article class="card soon reveal">
-        <div class="soon-img">In progress</div>
-        <div class="card-body">
-          <div class="top">
-            <div><h4>Autonomous Car</h4><div class="org">MAE/ECE 148 · UC San Diego</div></div>
-            <div class="yr">Summer 2026</div>
-          </div>
-          <span class="role building">Building now</span>
-          <p>A 1/10-scale self-driving car built on UCSD's autonomous-vehicles course stack: ROS 2 nodes for camera-based lane following, then a custom final project on top. It's the natural next step after the drone, trading flight for the road — the full write-up lands here as it comes together.</p>
-          <div class="tags"><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">Controls</span></div>
-        </div>
-      </article>
 
     </div>
   </div>
@@ -316,7 +217,7 @@
 <!-- EXPERIENCE -->
 <section id="experience" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">04</span><h3>Experience</h3></div>
+    <div class="sec-head reveal"><span class="num">03</span><h3>Experience</h3></div>
     <div class="timeline">
       <div class="row reveal">
         <div class="when">Jan 2026 to present</div>
@@ -349,7 +250,7 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">05</span><h3>Skills</h3></div>
+    <div class="sec-head reveal"><span class="num">04</span><h3>Skills</h3></div>
     <div class="skills">
       <div class="skillcard reveal"><h4>CAD / CAE</h4><div class="chips">
         <span>SolidWorks</span><span>Simulation</span><span>PDM</span><span>Fusion 360</span><span>NX</span><span>AutoCAD</span><span>ANSYS (FEA)</span></div></div>
@@ -366,7 +267,7 @@
 <!-- GALLERY -->
 <section id="gallery" class="alt">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">06</span><h3>Gallery</h3></div>
+    <div class="sec-head reveal"><span class="num">05</span><h3>Gallery</h3></div>
     <p class="lead-2 reveal">A few shots of the builds and the work behind them, including how the drone went from a bare frame to flight-ready. Tap any photo to enlarge it.</p>
     <div class="ba reveal">
       <figure><picture>
@@ -439,6 +340,145 @@
     <span class="mono">San Diego, CA · Built from scratch</span>
   </div>
 </footer>
+
+<!-- Build-up detail panels (moved into the page by site.js when a step is clicked) -->
+<div id="panel-store" hidden>
+
+  <div id="xp-cannon" class="xp">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>Machined Mini Cannon</h4>
+      <div class="org">Machine Shop Project · UC San Diego · 2024</div>
+      <span class="role">CAD · CNC Machining</span>
+      <p>A team machine-shop build, and where I learned to actually make parts: a working scale cannon turned and milled from aluminum. We modeled every piece in SolidWorks, drew dimensioned and toleranced engineering drawings, then cut them on a manual lathe, a Tormach lathe, and Haas CNC mills before assembling and polishing the finished cannon.</p>
+      <div class="tags"><span class="tag">SolidWorks</span><span class="tag">Lathe</span><span class="tag">CNC Mill</span><span class="tag">GD&amp;T</span><span class="tag">Drawings</span></div>
+      <div class="card-links"><a class="codelink" href="cannon.html">See the full build page</a></div>
+    </div>
+    <div class="xp-photos">
+      <figure><picture>
+        <source srcset="images/cannon-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon with ball-bearing ammo" /></picture><figcaption>The finished cannon, ball bearings for scale.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/cannon-2.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Side profile: turned barrel on the milled stand.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/cannon-cad.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly of the cannon" /></picture><figcaption>The SolidWorks assembly it started from.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/cannon-drawing.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/cannon-drawing.jpg" alt="A dimensioned engineering drawing of the cannon barrel" /></picture><figcaption>One of the toleranced part drawings.</figcaption></figure>
+    </div>
+  </div>
+
+  <div id="xp-mae3" class="xp">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>MAE3 Autonomous Robot</h4>
+      <div class="org">1st Place · UCSD MAE3 Robot Competition · Fall 2024</div>
+      <span class="role">Mechanical Lead</span>
+      <p>Led mechanical design on a small team: built the chassis and drivetrain from scratch and iterated through three revisions to take first place in the competition. Everything was designed in CAD, 3D-printed and laser-cut, and rebuilt as fast as testing broke it.</p>
+      <div class="tags"><span class="tag">CAD</span><span class="tag">Mechanism Design</span><span class="tag">Rapid Prototyping</span></div>
+    </div>
+    <div class="xp-photos">
+      <figure><picture>
+        <source srcset="images/mae3-2.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow 3D-printed MAE3 competition robot, full view" /></picture><figcaption>The robot, 3D-printed and built from scratch.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/mae3-3.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mae3-3.jpg" alt="The MAE3 robot with its first-place certificate" /></picture><figcaption>First place, Fall 2024.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/mae3-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mae3-1.jpg" alt="The MAE3 robot's arm, gear train, and drivetrain up close" /></picture><figcaption>Gear train, arm, and drivetrain up close.</figcaption></figure>
+    </div>
+  </div>
+
+  <div id="xp-metrology" class="xp xp-solo">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>Advanced Materials Metrology</h4>
+      <div class="org">Ghazinejad Lab, UC San Diego · 2025</div>
+      <span class="role">Test &amp; Data Pipelines</span>
+      <p>Turning raw optical metrology into fatigue-life data for additively-manufactured steels. I built MATLAB pipelines that quantify defect fractions and surface roughness, designed and machined test fixtures, and ran fatigue tests across material variants while keeping the datasets clean and traceable.</p>
+      <div class="tags"><span class="tag">MATLAB</span><span class="tag">Machine Vision</span><span class="tag">Metrology</span><span class="tag">CNC / Waterjet</span></div>
+    </div>
+  </div>
+
+  <div id="xp-software" class="xp xp-solo">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>The Software Side</h4>
+      <div class="org">MAE 107 + personal projects · 2025&ndash;2026</div>
+      <span class="role">MATLAB · Python · AI Systems</span>
+      <h5>Numerical Methods Toolkit — MAE 107, MATLAB</h5>
+      <p>A from-scratch set of the core numerical methods in MATLAB: ODE solvers (Euler and my own RK45), a shooting method, numerical integration (trapezoid and midpoint), finite-difference derivatives, and root finding (bisection and fixed-point iteration).</p>
+      <h5>StockAI — AI Trading Research System</h5>
+      <p>A personal deep-dive into modern software and AI tooling: an automated trading research system that ingests public "smart money" signals (congressional trades, insider filings, 13F whales, activist positions), scores them, and paper-trades a risk-gated portfolio end to end, with backtesting behind every rule. The repo is private since it trades a live account, but I'm happy to walk through the architecture.</p>
+      <div class="tags"><span class="tag">MATLAB</span><span class="tag">RK45</span><span class="tag">Python</span><span class="tag">AI Agents</span><span class="tag">REST APIs</span><span class="tag">Backtesting</span><span class="tag">Risk Management</span></div>
+      <div class="card-links"><a class="codelink" href="https://github.com/Farbod97/Numerical-Methods" target="_blank" rel="noopener">Numerical methods on GitHub</a></div>
+    </div>
+  </div>
+
+  <div id="xp-mouse" class="xp">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>Automated Mouse Cognitive-Training System</h4>
+      <div class="org">Senior Design · Jared Young Lab, UCSD · 2026</div>
+      <span class="role">Software / UI Engineer</span>
+      <p>My senior capstone for a UCSD neuroscience lab: an automated touchscreen rig that trains group-housed mice on the 5-choice task. I handled the software side of it, which meant an operator dashboard (HTML/CSS/JS) with live per-mouse metrics, a Python/Flask "brain" that runs through every training stage in order, and the data-logging plus the Wi-Fi/MQTT link to the hardware.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">MQTT</span><span class="tag">State Machines</span></div>
+      <div class="card-links"><a class="codelink" href="mouse-system.html">See the full breakdown</a><a class="codelink" href="https://github.com/Farbod97/Mouse-traning-system" target="_blank" rel="noopener">View code</a></div>
+    </div>
+    <div class="xp-photos">
+      <figure><picture>
+        <source srcset="images/mouse-rig.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /></picture><figcaption>The full rig: chambers, touchscreens, control box.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/mouse-modules.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /></picture><figcaption>Touchscreen modules and the transfer tube.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/mouse-system-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /></picture><figcaption>Presenting at the senior design showcase.</figcaption></figure>
+    </div>
+  </div>
+
+  <div id="xp-drone" class="xp">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>Fixed-Tilt Hexacopter</h4>
+      <div class="org">UAV Controls &amp; Robotics · Bewley Lab, UCSD · Since Jan 2026</div>
+      <span class="role">CAD · Fabrication · Controls</span>
+      <p>A six-rotor drone whose rotors sit at fixed angles, so it can move in all six directions without a gimbal. It's meant for tracking a target and searching tight spaces like tunnels. I took it from CAD to a flight-ready build: the SolidWorks design, a 3D-printed monocoque airframe, thrust-stand testing of ducted vs. un-ducted props, and a 6-DoF flight controller that I tune in MATLAB and test in our motion-capture room.</p>
+      <div class="tags"><span class="tag">SolidWorks</span><span class="tag">MATLAB</span><span class="tag">6-DoF Control</span><span class="tag">3D Printing</span><span class="tag">UAV</span></div>
+      <div class="card-links"><a class="codelink" href="drone.html">See the full breakdown</a><a class="codelink" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">View code</a></div>
+    </div>
+    <div class="xp-photos">
+      <figure><picture>
+        <source srcset="images/drone-final-persp.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></picture><figcaption>The finished aircraft, props on.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-final-side.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, flight-ready" /></picture><figcaption>Side profile, flight-ready.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-green-top.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view with green flight props on the optics bench" /></picture><figcaption>Top down on the optics bench.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-build-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build with the flight controller exposed" /></picture><figcaption>Mid-build: electronics exposed, no props yet.</figcaption></figure>
+    </div>
+  </div>
+
+  <div id="xp-car" class="xp xp-solo">
+    <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
+    <div class="xp-main">
+      <h4>Autonomous Car</h4>
+      <div class="org">MAE/ECE 148 · UC San Diego · Summer 2026</div>
+      <span class="role">Building now</span>
+      <p>A 1/10-scale self-driving car built on UCSD's autonomous-vehicles course stack: ROS 2 nodes for camera-based lane following, then a custom final project on top. It's the natural next step after the drone, trading flight for the road — the full write-up lands here as it comes together.</p>
+      <div class="tags"><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">Controls</span></div>
+    </div>
+  </div>
+
+</div>
 
 <script src="assets/site.js" defer></script>
 </body>

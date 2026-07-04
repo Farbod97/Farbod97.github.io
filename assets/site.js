@@ -123,9 +123,104 @@
     }
   }
 
+  /* ---------- the build-up: click a step to slide its project open ---------- */
+  var journey = document.querySelector('.journey');
+  var store = document.getElementById('panel-store');
+  if (journey && store) {
+    var jsteps = Array.prototype.slice.call(journey.querySelectorAll('.step[data-panel]'));
+    var xpWrap = document.createElement('div');
+    xpWrap.className = 'step-expander';
+    var openStep = null;
+    var noMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Last step on the same visual row, so the panel opens directly beneath it.
+    function rowLast(step) {
+      var top = step.offsetTop, last = step;
+      jsteps.forEach(function (s) { if (Math.abs(s.offsetTop - top) < 2) last = s; });
+      return last;
+    }
+    function stash() {
+      while (xpWrap.firstChild) store.appendChild(xpWrap.firstChild);
+    }
+    function afterTransition(fn) {
+      var done = false;
+      var t = setTimeout(run, 520);
+      function run(e) {
+        if (e && e.target !== xpWrap) return;
+        if (done) return;
+        done = true;
+        clearTimeout(t);
+        xpWrap.removeEventListener('transitionend', run);
+        fn();
+      }
+      xpWrap.addEventListener('transitionend', run);
+    }
+    function collapse(then) {
+      if (!openStep) { if (then) then(); return; }
+      openStep.classList.remove('open');
+      openStep.setAttribute('aria-expanded', 'false');
+      openStep = null;
+      if (noMotion) {
+        stash(); xpWrap.remove();
+        if (then) then(); return;
+      }
+      xpWrap.style.height = xpWrap.scrollHeight + 'px';
+      void xpWrap.offsetHeight;
+      xpWrap.style.height = '0px';
+      afterTransition(function () {
+        stash(); xpWrap.remove();
+        if (then) then();
+      });
+    }
+    function expand(step) {
+      var panel = document.getElementById(step.getAttribute('data-panel'));
+      if (!panel) return;
+      stash();
+      rowLast(step).insertAdjacentElement('afterend', xpWrap);
+      xpWrap.appendChild(panel);
+      openStep = step;
+      step.classList.add('open');
+      step.setAttribute('aria-expanded', 'true');
+      if (noMotion) { xpWrap.style.height = 'auto'; return; }
+      xpWrap.style.height = '0px';
+      void xpWrap.offsetHeight;
+      xpWrap.style.height = xpWrap.scrollHeight + 'px';
+      afterTransition(function () {
+        xpWrap.style.height = 'auto';
+        var r = xpWrap.getBoundingClientRect();
+        if (r.bottom > window.innerHeight || r.top < 0) {
+          xpWrap.scrollIntoView({ behavior: noMotion ? 'auto' : 'smooth', block: 'nearest' });
+        }
+      });
+    }
+    function toggleStep(step) {
+      if (openStep === step) collapse();
+      else if (openStep) collapse(function () { expand(step); });
+      else expand(step);
+    }
+    jsteps.forEach(function (step) {
+      step.addEventListener('click', function () { toggleStep(step); });
+      step.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleStep(step); }
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('.xp-close')) collapse();
+    });
+    // Column count changes on resize; keep the panel under its step.
+    var rsz;
+    window.addEventListener('resize', function () {
+      clearTimeout(rsz);
+      rsz = setTimeout(function () {
+        if (openStep) rowLast(openStep).insertAdjacentElement('afterend', xpWrap);
+      }, 150);
+    }, { passive: true });
+  }
+
   /* ---------- lightbox for gallery images ---------- */
   var lbFigures = Array.prototype.slice.call(
-    document.querySelectorAll('.masonry figure, .gallery figure, .ba figure'));
+    document.querySelectorAll('.masonry figure, .gallery figure, .ba figure, .xp-photos figure'));
   if (lbFigures.length) {
     var lb = document.createElement('div');
     lb.className = 'lightbox';

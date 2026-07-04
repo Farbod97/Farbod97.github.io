@@ -158,36 +158,49 @@ strong{font-weight:600}
 .about-card dt{color:var(--muted)}
 .about-card dd{font-weight:600;text-align:right}
 
-/* ---------- journey ---------- */
-.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:.875rem}
-.step{display:flex;flex-direction:column}
-.step-img{height:7.375rem;border-radius:.75rem;overflow:hidden;border:1px solid var(--line);background:var(--tag-bg)}
+/* ---------- the build-up (journey + expandable project panels) ---------- */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:.875rem}
+.step{display:flex;flex-direction:column;border-radius:.85rem}
+.step[data-panel]{cursor:pointer}
+.step-img{height:8.25rem;border-radius:.75rem;overflow:hidden;border:1px solid var(--line);background:var(--tag-bg);
+  transition:border-color .2s ease,box-shadow .2s ease}
 .step-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
-.step h4{font-size:.9375rem;font-weight:700;letter-spacing:-.01em;margin-top:.8rem}
+.step .yr{align-self:flex-start;margin:.8rem 0 .4rem;font-size:.72rem;font-weight:700;color:var(--accent-2);
+  background:var(--chip);padding:.19rem .56rem;border-radius:1.25rem}
+.step h4{font-size:.9375rem;font-weight:700;letter-spacing:-.01em}
+.step h4 .chev{display:inline-block;margin-left:.15rem;color:var(--accent);font-weight:800;
+  transition:transform .3s ease}
 .step p{font-size:.78rem;color:var(--muted);margin-top:.3rem;line-height:1.5}
-.step.soon .step-img{display:flex;align-items:center;justify-content:center;border-style:dashed;border-color:var(--chip-line);
+.step.open h4 .chev{transform:rotate(45deg)}
+.step.open .step-img{border-color:var(--accent);box-shadow:0 0 0 2px var(--chip-line)}
+.step-img.tile{display:flex;align-items:center;justify-content:center;border-style:dashed;border-color:var(--chip-line);
   background:repeating-linear-gradient(135deg,var(--chip),var(--chip) 10px,var(--bg-alt) 10px,var(--bg-alt) 20px);
-  color:var(--accent-2);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}
+  color:var(--accent-2);font-weight:700;letter-spacing:.06em;font-size:.85rem;
+  font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
 
-/* ---------- project cards ---------- */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.375rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  display:flex;flex-direction:column;overflow:hidden;
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.card-img{height:13.125rem;background:var(--tag-bg);overflow:hidden}
-.card-img img{width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .6s cubic-bezier(.22,.61,.36,1)}
-.card-img.contain{display:flex;align-items:center;justify-content:center}
-.card-img.contain img{object-fit:contain;padding:.375rem}
-.card-body{padding:1.5rem 1.625rem 1.625rem;display:flex;flex-direction:column;flex:1}
-.card.text-only .card-body{padding:1.625rem}
-.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem}
-.card h4{font-size:1.25rem;letter-spacing:-.01em;font-weight:700}
-.card .org{color:var(--muted);font-size:.875rem;margin-top:.2rem}
-.card .yr{font-size:.78rem;color:var(--muted);white-space:nowrap;font-weight:500}
+/* the panel that slides open under a clicked step */
+.step-expander{grid-column:1/-1;overflow:hidden;height:0;
+  transition:height .45s cubic-bezier(.22,.61,.36,1)}
+.xp{position:relative;background:var(--card);border:1px solid var(--chip-line);border-radius:var(--radius);
+  padding:1.625rem 1.75rem;margin:.25rem 0 .375rem;display:grid;grid-template-columns:1.4fr 1fr;gap:1.75rem}
+.xp.xp-solo{grid-template-columns:1fr}
+.xp h4{font-size:1.375rem;letter-spacing:-.01em;padding-right:2.5rem}
+.xp .org{color:var(--muted);font-size:.9rem;margin-top:.2rem}
+.xp h5{font-size:1rem;font-weight:700;margin-top:1.125rem}
+.xp p{color:var(--body-2);font-size:.9375rem;margin-top:.75rem}
+.xp .tags{margin-top:1rem}
+.xp-photos{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;align-self:start}
+.xp-photos figure{position:relative;margin:0;border:1px solid var(--line);border-radius:.75rem;overflow:hidden;background:var(--tag-bg)}
+.xp-photos img{display:block;width:100%;height:8.5rem;object-fit:cover}
+.xp-photos figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.xp-close{position:absolute;top:.75rem;right:.75rem;width:2.25rem;height:2.25rem;border-radius:50%;
+  border:1px solid var(--line);background:var(--bg-alt);color:var(--muted);cursor:pointer;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;transition:color .15s,border-color .15s}
+.xp-close:hover{color:var(--ink);border-color:var(--chip-line)}
+
+/* ---------- shared project bits (role chips, tags, links) ---------- */
 .role{display:inline-block;margin-top:.875rem;font-size:.75rem;font-weight:600;color:var(--accent-2);
   background:var(--chip);padding:.25rem .625rem;border-radius:1.25rem;align-self:flex-start}
-.card p{color:var(--body-2);font-size:.9375rem;margin-top:.875rem;flex:1}
 .tags{display:flex;flex-wrap:wrap;gap:.44rem;margin-top:1.125rem}
 .tag{font-size:.75rem;color:var(--muted);background:var(--tag-bg);border:1px solid var(--line);
   padding:.2rem .55rem;border-radius:.44rem}
@@ -196,12 +209,6 @@ strong{font-weight:600}
 .codelink:hover{color:var(--accent)}
 .card-links{display:flex;flex-wrap:wrap;gap:0 1.25rem}
 .card-links .codelink{margin-top:1rem}
-.card.soon{border-color:var(--chip-line);background:linear-gradient(180deg,var(--card),var(--bg-alt))}
-.soon-img{height:13.125rem;display:flex;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(135deg,var(--chip),var(--chip) 12px,var(--bg-alt) 12px,var(--bg-alt) 24px);
-  border-bottom:1px dashed var(--chip-line);color:var(--accent-2);font-weight:700;
-  text-transform:uppercase;letter-spacing:.09em;font-size:.8125rem}
-.role.building{background:var(--chip);color:var(--accent-2);border:1px solid var(--chip-line)}
 
 /* ---------- experience ---------- */
 .timeline{display:flex;flex-direction:column}
@@ -308,8 +315,8 @@ footer.center .wrap{display:block}
   .btn.light:hover{background:#eaf1ff;color:#0c1830;box-shadow:0 9px 28px -8px rgba(255,255,255,.55)}
   .btn.outline:hover{background:rgba(255,255,255,.10);color:#eaf1ff;box-shadow:0 0 22px -2px rgba(127,166,255,.5)}
   .step:hover .step-img img{transform:scale(1.06)}
-  .card:hover{transform:translateY(-5px);box-shadow:0 22px 50px -26px rgba(var(--shadow),.45);border-color:var(--chip-line)}
-  .card:hover .card-img:not(.contain) img{transform:scale(1.05)}
+  .step[data-panel]:hover .step-img{border-color:var(--chip-line);box-shadow:0 10px 26px -18px rgba(var(--shadow),.45)}
+  .xp-photos figure:hover{box-shadow:0 12px 28px -18px rgba(var(--shadow),.5)}
   .skillcard:hover{transform:translateY(-3px);box-shadow:0 16px 36px -24px rgba(var(--shadow),.4);border-color:var(--chip-line)}
   .masonry figure:hover,.gallery figure:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(var(--shadow),.45)}
 }
@@ -339,9 +346,6 @@ footer.center .wrap{display:block}
 }
 
 /* Tablet & below */
-@media(max-width:900px){
-  .journey{grid-template-columns:repeat(3,1fr)}
-}
 @media(max-width:820px){
   nav.links{position:fixed;left:0;right:0;top:4rem;bottom:auto;flex-direction:column;align-items:flex-start;
     gap:0;background:var(--bg);border-bottom:1px solid var(--line);
@@ -353,8 +357,8 @@ footer.center .wrap{display:block}
   .menu-toggle{display:flex;align-items:center;justify-content:center}
   .about-grid{grid-template-columns:1fr;gap:1.625rem}
   .about-card dd{text-align:left}
-  .grid{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr}
+  .xp{grid-template-columns:1fr;padding:1.25rem;gap:1.25rem}
   .row{grid-template-columns:1fr;gap:.375rem}
   .masonry{column-count:2}
   .hero .wrap{padding-top:4rem;padding-bottom:4.25rem}
@@ -375,7 +379,7 @@ footer.center .wrap{display:block}
 }
 @media(max-width:420px){
   .journey{grid-template-columns:1fr}
-  .card .top{flex-direction:column;gap:.2rem}
+  .xp-photos{grid-template-columns:1fr 1fr}
 }
 /* Phone in landscape: don't let the hero eat the whole screen */
 @media(max-height:520px) and (orientation:landscape){
@@ -389,7 +393,8 @@ footer.center .wrap{display:block}
   .reveal{opacity:1;transform:none;transition:none}
   .hero-slides .slide{transition:opacity 1s ease;transform:none}
   html{scroll-behavior:auto}
-  .card,.skillcard,.step-img img,.card-img img,.btn{transition:none}
+  .skillcard,.step-img img,.btn{transition:none}
+  .step-expander{transition:none}
 }
 
 /* ---------- print ---------- */
