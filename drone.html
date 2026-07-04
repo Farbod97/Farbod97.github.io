@@ -2,106 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Fixed-Tilt Hexacopter | Farbod Haeri</title>
 <meta name="description" content="A fully-actuated, fixed-tilt hexacopter designed and built by Farbod Haeri in Prof. Thomas Bewley's lab at UC San Diego: CAD, a 3D-printed monocoque airframe, ducted-prop testing, and a 6-DoF flight controller." />
+<link rel="canonical" href="https://farbodh.com/drone.html" />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://farbodh.com/drone.html" />
+<meta property="og:title" content="Fixed-Tilt Hexacopter — Farbod Haeri" />
+<meta property="og:description" content="From CAD to flight-ready: a fully-actuated six-rotor drone with a 3D-printed monocoque airframe and a 6-DoF MATLAB flight controller." />
+<meta property="og:image" content="https://farbodh.com/images/drone-final-persp.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --bg:#ffffff;--bg-alt:#f5f8fc;--ink:#0d1a2d;--muted:#5a6b81;--line:#e3e9f1;
-    --accent:#2f6df6;--accent-dk:#1c4fd1;--chip:#eaf1fe;--radius:16px;--max:900px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  .mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
-
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--line)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .brand{font-weight:800;letter-spacing:-.02em;font-size:17px}
-  .brand span{color:var(--accent)}
-  .back{font-size:14px;font-weight:500;color:var(--muted)}
-  .back:hover{color:var(--ink)}
-
-  .hero{position:relative;overflow:hidden;background:#0b1730;color:#eaf1ff}
-  .hero-slides{position:absolute;inset:0;z-index:0}
-  .hero-slides .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.04);transition:opacity 1.6s ease,transform 7s ease}
-  .hero-slides .slide.active{opacity:1;transform:scale(1)}
-  .hero .tint{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(8,15,30,.86),rgba(12,22,42,.72))}
-  .hero .wrap{position:relative;z-index:2;padding:66px 24px 60px;text-shadow:0 1px 16px rgba(0,0,0,.35)}
-  .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8fb0ff}
-  .hero h1{font-size:clamp(30px,5.4vw,48px);line-height:1.05;letter-spacing:-.025em;font-weight:800;margin:12px 0 14px}
-  .hero p{max-width:620px;color:#c4d4ef;font-size:17px}
-  .meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:22px}
-  .meta span{font-size:12.5px;font-weight:500;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#eaf1ff;padding:5px 11px;border-radius:20px}
-
-  section{padding:46px 0}
-  section.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:16px}
-  h3{font-size:21px;letter-spacing:-.01em;margin:0 0 8px}
-  p.body{font-size:16.5px;color:#33415a;margin-bottom:16px}
-  .lede{font-size:18px;color:#26344a}
-  strong{font-weight:600}
-
-  .built{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
-  .built .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-  .built .item h4{font-size:16px;margin-bottom:5px}
-  .built .item code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent-dk);background:var(--chip);padding:1px 6px;border-radius:5px}
-  .built .item p{font-size:14.5px;color:#46556e;margin-top:7px}
-
-  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:6px 0 4px}
-  .flow .node{flex:1 1 200px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-  .flow .node .k{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-  .flow .node h4{font-size:16px;margin:4px 0 4px}
-  .flow .node p{font-size:13.5px;color:#46556e}
-  .flow .link{display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);font-weight:500;padding:0 2px}
-
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-  .chips span{font-size:13.5px;background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:8px;color:#33415a}
-
-  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-top:6px}
-  .ba figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
-  .ba img{display:block;width:100%;height:250px;object-fit:cover}
-  .ba figcaption{font-size:13px;color:var(--muted);padding:9px 13px}
-  .ba .arrow{font-size:26px;color:var(--accent);font-weight:800}
-  @media(max-width:640px){.ba{grid-template-columns:1fr}.ba .arrow{transform:rotate(90deg);justify-self:center}}
-
-  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}
-  .gallery figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
-  .gallery figure:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(13,26,45,.45)}
-  .gallery img{display:block;width:100%;height:auto}
-  .gallery figcaption{font-size:13px;color:var(--muted);padding:10px 14px}
-
-  .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-weight:600;font-size:14.5px;padding:11px 18px;border-radius:10px;transition:background .18s ease,transform .18s ease,box-shadow .28s ease}
-  .btn:hover{background:var(--accent-dk);transform:translateY(-1px);box-shadow:0 9px 26px -8px rgba(47,109,246,.62)}
-  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn.ghost:hover{background:var(--bg-alt);box-shadow:0 8px 22px -10px rgba(13,26,45,.28)}
-
-  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13.5px;text-align:center}
-
-  @media(max-width:720px){.built,.gallery{grid-template-columns:1fr}}
-</style>
+<link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html">Farbod<span>.</span>Haeri</a>
-    <a class="back" href="index.html">Back to home</a>
+    <div class="nav-actions">
+      <a class="back" href="index.html#projects">Back to projects</a>
+      <button class="theme-toggle" type="button" aria-label="Switch between dark and light mode">
+        <span class="moon" aria-hidden="true">&#9789;</span><span class="sun" aria-hidden="true">&#9788;</span>
+      </button>
+    </div>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero sub">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide" style="background-image:url('images/drone-final-side.jpg')"></div>
-    <div class="slide" style="background-image:url('images/drone-final-top2.jpg')"></div>
+    <div class="slide"><picture>
+      <source srcset="images/drone-final-side.webp" type="image/webp" />
+      <img src="images/drone-final-side.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+    <div class="slide"><picture>
+      <source srcset="images/drone-final-top2.webp" type="image/webp" />
+      <img src="images/drone-final-top2.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
   </div>
-  <div class="tint" aria-hidden="true"></div>
+  <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">UAV Controls &amp; Robotics · Bewley Lab, UC San Diego</p>
     <h1>Fixed-Tilt Hexacopter</h1>
@@ -115,9 +58,10 @@
   </div>
 </section>
 
+<main class="sub">
 <section>
   <div class="wrap">
-    <h2>The idea</h2>
+    <h2 class="kicker">The idea</h2>
     <p class="body lede">Most drones are under-actuated. Four rotors all point the same way, so to move sideways the whole aircraft has to tilt first. That couples where it goes to how it is oriented.</p>
     <p class="body">This hexacopter is <strong>fully actuated</strong>. Its six rotors sit at fixed cant angles, so together they can produce force and torque in all six degrees of freedom independently. It can slide sideways while staying level, hold a steady attitude while it translates, and keep a sensor pointed at a target instead of swinging it around. That makes it well suited to tracking something or threading through a tight space like a tunnel. The <strong>fixed-tilt</strong> part matters too: the angles are built into the frame rather than driven by extra gimbal motors, so the geometry does the work and the aircraft stays light and simple.</p>
   </div>
@@ -125,25 +69,25 @@
 
 <section class="alt">
   <div class="wrap">
-    <h2>What I built</h2>
+    <h2 class="kicker">What I built</h2>
     <p class="body">I own this one end to end, from the first CAD sketch to flight tuning. The work splits into four pieces.</p>
     <div class="built">
-      <div class="item">
+      <div class="item reveal">
         <h4>Airframe design</h4>
         <code>SolidWorks</code>
         <p>The full six-rotor frame with the rotors canted at fixed angles, designed as a 3D-printed monocoque so the ducts and arms print as one stiff, light structure instead of many bolted parts.</p>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <h4>Propulsion testing</h4>
         <code>Thrust stand</code>
         <p>Measured thrust, torque, and efficiency for ducted versus un-ducted props on a thrust stand, because the ducts change how much thrust you get per watt, and used that to choose the rotor setup.</p>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <h4>6-DoF flight controller</h4>
         <code>MATLAB</code>
         <p>A state-space controller that commands all six degrees of freedom at once, derived and tuned in MATLAB before it ever leaves the bench, then mixed down to the six motor commands.</p>
       </div>
-      <div class="item">
+      <div class="item reveal">
         <h4>Flight testing</h4>
         <code>Motion capture</code>
         <p>Brought up and tuned the controller in our motion-capture room, which gives ground-truth position and attitude to close the loop and check the aircraft behaves the way the model says it should.</p>
@@ -154,21 +98,21 @@
 
 <section>
   <div class="wrap">
-    <h2>How it works</h2>
+    <h2 class="kicker">How it works</h2>
     <div class="flow">
-      <div class="node">
+      <div class="node reveal">
         <div class="k">Setpoint</div>
         <h4>Where to go</h4>
         <p>A desired position and attitude in all six degrees of freedom.</p>
       </div>
       <div class="link">runs through</div>
-      <div class="node">
+      <div class="node reveal">
         <div class="k">Pixhawk 6C</div>
         <h4>Flight controller</h4>
         <p>Runs the 6-DoF control law and mixes it into six individual motor commands.</p>
       </div>
       <div class="link">drives</div>
-      <div class="node">
+      <div class="node reveal">
         <div class="k">Six ducted rotors</div>
         <h4>Fixed-tilt geometry</h4>
         <p>The fixed cant angles turn those commands into force and torque in any direction.</p>
@@ -180,19 +124,23 @@
 
 <section class="alt">
   <div class="wrap">
-    <h2>From build to flight</h2>
-    <p class="body">Same aircraft, a few months apart: bare airframe and exposed electronics, then props on and flight-ready.</p>
+    <h2 class="kicker">From build to flight</h2>
+    <p class="body">Same aircraft, a few months apart: bare airframe and exposed electronics, then props on and flight-ready. Tap either photo to enlarge.</p>
     <div class="ba">
-      <figure><img loading="lazy" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /><figcaption>Mid-build: airframe and flight controller, no props yet.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-build-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /></picture><figcaption>Mid-build: airframe and flight controller, no props yet.</figcaption></figure>
       <span class="arrow" aria-hidden="true">&rarr;</span>
-      <figure><img loading="lazy" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /><figcaption>Finished: props on, wired, and flight-ready.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-final-side.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /></picture><figcaption>Finished: props on, wired, and flight-ready.</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Tech</h2>
+    <h2 class="kicker">Tech</h2>
     <div class="chips">
       <span>SolidWorks</span><span>MATLAB</span><span>6-DoF Control</span><span>State-Space / LQR</span><span>3D-Printed Monocoque</span><span>Ducted Rotors</span><span>Pixhawk 6C</span><span>Thrust-Stand Testing</span><span>Motion Capture</span><span>Sensor Fusion</span>
     </div>
@@ -201,45 +149,51 @@
 
 <section class="alt">
   <div class="wrap">
-    <h2>Gallery</h2>
+    <h2 class="kicker">Gallery</h2>
     <div class="gallery">
-      <figure><img loading="lazy" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /><figcaption>The finished aircraft, back in the lab where it was built.</figcaption></figure>
-      <figure><img loading="lazy" src="images/drone-final-top.jpg" alt="Top-down view of the finished six-rotor drone" /><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
-      <figure><img loading="lazy" src="images/drone-final-persp.jpg" alt="The finished drone at an angle, props mounted" /><figcaption>Props on, ready to fly.</figcaption></figure>
-      <figure><img loading="lazy" src="images/drone-final-front.jpg" alt="Front view of the finished drone" /><figcaption>The low, ducted profile from the front.</figcaption></figure>
-      <figure><img loading="lazy" src="images/drone-green-1.jpg" alt="The drone on the optics bench" /><figcaption>On the optics bench during a work session.</figcaption></figure>
-      <figure><img loading="lazy" src="images/drone-build-top.jpg" alt="Top-down of the airframe during assembly" /><figcaption>Assembly: airframe and battery, before the flight props.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-final-hold.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /></picture><figcaption>The finished aircraft, back in the lab where it was built.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-final-top.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-top.jpg" alt="Top-down view of the finished six-rotor drone" /></picture><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-final-persp.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished drone at an angle, props mounted" /></picture><figcaption>Props on, ready to fly.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-final-front.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-front.jpg" alt="Front view of the finished drone" /></picture><figcaption>The low, ducted profile from the front.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-green-top.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view with green flight props on the optics bench" /></picture><figcaption>Green flight props mounted, on the optics bench.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-green-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-green-1.jpg" alt="The drone on the optics bench" /></picture><figcaption>On the optics bench during a work session.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-lab.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-lab.jpg" alt="The bare airframe on a stool in the lab" /></picture><figcaption>The airframe between build sessions in the lab.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-build-top.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-build-top.jpg" alt="Top-down of the airframe during assembly" /></picture><figcaption>Assembly: airframe and battery, before the flight props.</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>More</h2>
+    <h2 class="kicker">More</h2>
     <p class="body">The flight-control code lives on GitHub, and there is more of my work on the main site.</p>
-    <div class="links">
+    <div class="links-row">
       <a class="btn" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">Flight-control code on GitHub</a>
-      <a class="btn ghost" href="index.html">Back to home</a>
+      <a class="btn ghost" href="index.html#projects">Back to projects</a>
     </div>
   </div>
 </section>
+</main>
 
-<footer>
+<footer class="center">
   <div class="wrap">© <span id="yr"></span> Farbod Haeri · San Diego, CA</div>
 </footer>
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  var slides = document.querySelectorAll('.hero-slides .slide');
-  if(slides.length){
-    var si = 0; slides[0].classList.add('active');
-    if(slides.length > 1){
-      setInterval(function(){
-        slides[si].classList.remove('active');
-        si = (si + 1) % slides.length;
-        slides[si].classList.add('active');
-      }, 5000);
-    }
-  }
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

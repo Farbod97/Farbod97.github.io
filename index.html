@@ -2,265 +2,117 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Farbod Haeri, Mechanical Engineer</title>
-<meta name="description" content="Farbod Haeri, a mechanical engineering student (BS/MS, UC San Diego) focused on robotics, controls, and building hardware that has to work in the real world." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Farbod Haeri — Mechanical Engineer · Robotics &amp; Controls</title>
+<meta name="description" content="Farbod Haeri is a mechanical engineer (BS/MS, UC San Diego) focused on robotics, controls, and building hardware that has to work in the real world — from a fully-actuated hexacopter to automated lab systems." />
+<link rel="canonical" href="https://farbodh.com/" />
+<meta name="theme-color" content="#ffffff" />
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://farbodh.com/" />
+<meta property="og:title" content="Farbod Haeri — Mechanical Engineer · Robotics & Controls" />
+<meta property="og:description" content="I build things that have to work in the real world: a fully-actuated hexacopter, automated lab systems, and machined hardware. BS/MS Mechanical Engineering, UC San Diego." />
+<meta property="og:image" content="https://farbodh.com/images/drone-final-persp.jpg" />
+<meta property="og:image:alt" content="The fixed-tilt hexacopter Farbod Haeri designed and built" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Farbod Haeri — Mechanical Engineer · Robotics & Controls" />
+<meta name="twitter:description" content="Robotics, controls, and hardware that has to work in the real world. BS/MS Mechanical Engineering, UC San Diego." />
+<meta name="twitter:image" content="https://farbodh.com/images/drone-final-persp.jpg" />
+
+<!-- icons -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+
+<!-- set theme before first paint to avoid a flash -->
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --bg:#ffffff;
-    --bg-alt:#f5f8fc;
-    --ink:#0d1a2d;
-    --muted:#5a6b81;
-    --line:#e3e9f1;
-    --accent:#2f6df6;
-    --accent-dk:#1c4fd1;
-    --chip:#eaf1fe;
-    --hero1:#0c1830;
-    --hero2:#142a4c;
-    --radius:16px;
-    --max:1080px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);background:var(--bg);line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+<link rel="preload" as="image" href="images/drone-final-side.webp" type="image/webp" />
+<link rel="stylesheet" href="assets/style.css" />
 
-  /* scroll progress */
-  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
-    background:linear-gradient(90deg,var(--accent),#7fa6ff);box-shadow:0 0 12px rgba(47,109,246,.5);
-    transition:width .08s linear}
-
-  /* NAV */
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);
-    background:rgba(255,255,255,.82);border-bottom:1px solid var(--line)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-weight:800;letter-spacing:-.02em;font-size:18px}
-  .brand span{color:var(--accent)}
-  nav.links{display:flex;align-items:center;gap:24px}
-  nav.links a{font-size:14.5px;font-weight:500;color:var(--muted);transition:color .15s}
-  nav.links a:hover{color:var(--ink)}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
-    font-weight:600;font-size:14px;padding:9px 16px;border-radius:10px;
-    transition:background .18s ease,transform .18s ease,box-shadow .28s ease;
-    box-shadow:0 0 0 rgba(47,109,246,0)}
-  .btn:hover{background:var(--accent-dk);transform:translateY(-1px);
-    box-shadow:0 9px 26px -8px rgba(47,109,246,.62)}
-  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
-  .btn.ghost:hover{background:var(--bg-alt);border-color:#cdd6e4;
-    box-shadow:0 8px 22px -10px rgba(13,26,45,.28)}
-  /* lighter-blue Resume button */
-  .btn.resume{background:var(--chip);color:var(--accent-dk);border:1px solid #cfe0ff;box-shadow:none}
-  .btn.resume:hover{background:#dbe8ff;color:var(--accent-dk);transform:translateY(-1px);
-    box-shadow:0 8px 24px -8px rgba(47,109,246,.45)}
-  .menu-toggle{display:none;background:none;border:0;cursor:pointer;font-size:22px;color:var(--ink)}
-
-  /* HERO */
-  .hero{position:relative;overflow:hidden;background:#0b1730;color:#eaf1ff}
-  .hero-slides{position:absolute;inset:0;z-index:0}
-  .hero-slides .slide{position:absolute;inset:0;background-size:cover;background-position:center;
-    opacity:0;transform:scale(1.04);transition:opacity 1.6s ease,transform 7s ease}
-  .hero-slides .slide.active{opacity:1;transform:scale(1)}
-  .hero-tint{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(8,15,30,.84) 0%,rgba(12,22,42,.66) 58%,rgba(20,33,60,.74) 100%)}
-  .hero .wrap{position:relative;z-index:2;padding:88px 24px 92px;text-shadow:0 1px 16px rgba(0,0,0,.30)}
-  .eyebrow{font-size:13px;font-weight:500;color:#7fa6ff;letter-spacing:.08em;text-transform:uppercase}
-  .hero h1{font-size:clamp(40px,7vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:800;margin:14px 0 8px}
-  .hero h2{font-size:clamp(18px,2.6vw,23px);font-weight:600;color:#bcd0f5;letter-spacing:-.01em}
-  .hero p.lead{max-width:620px;margin:20px 0 30px;color:#aebfdc;font-size:17px}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  .btn.light{background:#fff;color:#0c1830;box-shadow:none}
-  .btn.light:hover{background:#eaf1ff;box-shadow:0 9px 28px -8px rgba(255,255,255,.55)}
-  .btn.outline{background:transparent;border:1px solid rgba(255,255,255,.28);color:#eaf1ff;box-shadow:none}
-  .btn.outline:hover{background:rgba(255,255,255,.10);box-shadow:0 0 22px -2px rgba(127,166,255,.5)}
-  .facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;color:#9fb3d6;font-size:14px}
-  .facts span{display:inline-flex;align-items:center;gap:8px}
-  .facts b{color:#eaf1ff;font-weight:600}
-  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
-
-  /* SECTIONS */
-  section{padding:74px 0}
-  .alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px}
-  .sec-head .num{font-size:14px;color:var(--accent);font-weight:600}
-  .sec-head h3{font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;font-weight:800}
-  .lead-2{max-width:660px;color:var(--muted);font-size:17px;margin-top:-18px;margin-bottom:30px}
-
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:46px}
-  .about-grid p{color:#33415a;font-size:17px;margin-bottom:16px}
-  .about-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;align-self:start}
-  .about-card h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
-  .about-card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;font-size:14.5px}
-  .about-card dt{color:var(--muted)}
-  .about-card dd{font-weight:600;text-align:right}
-
-  /* JOURNEY */
-  .journey{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-  .step{display:flex;flex-direction:column}
-  .step-img{height:118px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#eef3fa}
-  .step-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
-  .step:hover .step-img img{transform:scale(1.06)}
-  .step .yr{align-self:flex-start;margin:13px 0 6px;font-size:11.5px;font-weight:700;color:var(--accent-dk);
-    background:var(--chip);padding:3px 9px;border-radius:20px}
-  .step h4{font-size:15px;font-weight:700;letter-spacing:-.01em}
-  .step p{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5}
-  .step.soon .step-img{display:flex;align-items:center;justify-content:center;border-style:dashed;border-color:#cfe0ff;
-    background:repeating-linear-gradient(135deg,#eef4ff,#eef4ff 10px,#f6f9ff 10px,#f6f9ff 20px);
-    color:var(--accent-dk);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:11.5px}
-  @media(max-width:900px){.journey{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:620px){.journey{grid-template-columns:1fr 1fr}}
-  @media(max-width:420px){.journey{grid-template-columns:1fr}}
-
-  /* PROJECTS */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    display:flex;flex-direction:column;overflow:hidden;
-    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-  .card:hover{transform:translateY(-5px);box-shadow:0 22px 50px -26px rgba(13,26,45,.45);border-color:#cdd9ec}
-  .card-img{height:210px;background:#eef3fa;overflow:hidden}
-  .card-img img{width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .6s cubic-bezier(.22,.61,.36,1)}
-  .card:hover .card-img:not(.contain) img{transform:scale(1.05)}
-  .card-img.contain{background:#f1f5fb;display:flex;align-items:center;justify-content:center}
-  .card-img.contain img{object-fit:contain;padding:6px}
-  .card-body{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
-  .card.text-only .card-body{padding:26px}
-  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-  .card h4{font-size:20px;letter-spacing:-.01em;font-weight:700}
-  .card .org{color:var(--muted);font-size:14px;margin-top:3px}
-  .card .yr{font-size:12.5px;color:var(--muted);white-space:nowrap;font-weight:500}
-  .role{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--accent-dk);
-    background:var(--chip);padding:4px 10px;border-radius:20px;align-self:flex-start}
-  .card p{color:#3a485f;font-size:15px;margin-top:14px;flex:1}
-  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
-  .tag{font-size:12px;color:var(--muted);background:#f1f5fb;border:1px solid var(--line);
-    padding:3px 9px;border-radius:7px}
-  .codelink{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--accent-dk);
-    transition:color .15s}
-  .codelink:hover{color:var(--accent)}
-  /* coming-soon card */
-  .card.soon{border-color:#cfe0ff;background:linear-gradient(180deg,#ffffff,#fbfdff)}
-  .soon-img{height:210px;display:flex;align-items:center;justify-content:center;
-    background:repeating-linear-gradient(135deg,#eef4ff,#eef4ff 12px,#f6f9ff 12px,#f6f9ff 24px);
-    border-bottom:1px dashed #cfe0ff;color:var(--accent-dk);font-weight:700;
-    text-transform:uppercase;letter-spacing:.09em;font-size:13px}
-  .role.building{background:#dcebff;color:var(--accent-dk)}
-
-  /* EXPERIENCE */
-  .timeline{display:flex;flex-direction:column;gap:0}
-  .row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
-  .row:first-child{border-top:0}
-  .row .when{color:var(--muted);font-size:14px;font-weight:500}
-  .row h4{font-size:18px;font-weight:700}
-  .row .sub{color:var(--accent-dk);font-weight:600;font-size:14.5px;margin:2px 0 6px}
-  .row p{color:#3a485f;font-size:15px}
-
-  /* SKILLS */
-  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .skillcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
-    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-  .skillcard:hover{transform:translateY(-3px);box-shadow:0 16px 36px -24px rgba(13,26,45,.4);border-color:#cdd9ec}
-  .skillcard h4{font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-bottom:12px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chips span{font-size:13.5px;background:#f1f5fb;border:1px solid var(--line);padding:5px 11px;border-radius:8px;color:#33415a}
-
-  /* GALLERY */
-  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:0 0 26px}
-  .ba figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
-  .ba img{display:block;width:100%;height:240px;object-fit:cover}
-  .ba figcaption{font-size:12.5px;color:var(--muted);padding:9px 13px}
-  .ba .arrow{font-size:26px;color:var(--accent);font-weight:800}
-  @media(max-width:640px){.ba{grid-template-columns:1fr}.ba .arrow{transform:rotate(90deg);justify-self:center}}
-  .masonry{column-count:3;column-gap:14px}
-  .masonry figure{break-inside:avoid;margin:0 0 14px;border:1px solid var(--line);border-radius:14px;
-    overflow:hidden;background:#fff;transition:transform .2s ease,box-shadow .2s ease}
-  .masonry figure:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(13,26,45,.45)}
-  .masonry img{display:block;width:100%;height:auto}
-  .masonry figcaption{font-size:12.5px;color:var(--muted);padding:9px 13px}
-  @media(max-width:820px){.masonry{column-count:2}}
-  @media(max-width:520px){.masonry{column-count:1}}
-
-  /* CONTACT */
-  .contact{text-align:center}
-  .contact h3{font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;font-weight:800;margin-bottom:14px}
-  .contact p{color:var(--muted);font-size:18px;max-width:520px;margin:0 auto 28px}
-  .contact .row-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
-
-  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13.5px}
-  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-
-  /* reveal on scroll */
-  .reveal{opacity:0;transform:translateY(22px);
-    transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}
-    .hero-slides .slide{transition:opacity 1s ease}
-    html{scroll-behavior:auto}
-  }
-
-  @media(max-width:820px){
-    nav.links{position:fixed;inset:64px 0 auto 0;flex-direction:column;align-items:flex-start;
-      gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 24px 18px;display:none}
-    nav.links.open{display:flex}
-    nav.links a{padding:11px 0;width:100%;border-bottom:1px solid var(--line)}
-    nav.links .btn{margin-top:12px}
-    .menu-toggle{display:block}
-    .about-grid{grid-template-columns:1fr;gap:26px}
-    .grid{grid-template-columns:1fr}
-    .skills{grid-template-columns:1fr}
-    .row{grid-template-columns:1fr;gap:6px}
-  }
-</style>
+<!-- structured data for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Farbod Haeri",
+  "url": "https://farbodh.com/",
+  "email": "mailto:fhaeri@ucsd.edu",
+  "image": "https://farbodh.com/images/drone-final-hold.jpg",
+  "jobTitle": "Mechanical Engineer",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of California, San Diego"
+  },
+  "address": { "@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA" },
+  "knowsAbout": ["Robotics", "Control Systems", "CAD", "Mechanical Design", "UAVs", "Mechatronics", "Manufacturing"],
+  "sameAs": [
+    "https://github.com/Farbod97",
+    "https://www.linkedin.com/in/farbodhaeri"
+  ]
+}
+</script>
 </head>
 <body>
 
+<a class="skip-link" href="#about">Skip to content</a>
 <div id="progress" aria-hidden="true"></div>
 
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top">Farbod<span>.</span>Haeri</a>
-    <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
-    <nav class="links" id="links">
-      <a href="#about" onclick="closeMenu()">About</a>
-      <a href="#journey" onclick="closeMenu()">Journey</a>
-      <a href="#projects" onclick="closeMenu()">Projects</a>
-      <a href="#experience" onclick="closeMenu()">Experience</a>
-      <a href="#skills" onclick="closeMenu()">Skills</a>
-      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#gallery">Gallery</a>
       <a class="btn resume" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" type="button" aria-label="Switch between dark and light mode">
+        <span class="moon" aria-hidden="true">&#9789;</span><span class="sun" aria-hidden="true">&#9788;</span>
+      </button>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="links">&#9776;</button>
+    </div>
   </div>
 </header>
 
 <a id="top"></a>
 <section class="hero">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide" style="background-image:url('images/drone-final-side.jpg')"></div>
-    <div class="slide" style="background-image:url('images/cannon-1.jpg')"></div>
-    <div class="slide" style="background-image:url('images/mouse-rig.jpg')"></div>
-    <div class="slide" style="background-image:url('images/drone-final-top2.jpg')"></div>
-    <div class="slide" style="background-image:url('images/mae3-2.jpg')"></div>
+    <div class="slide"><picture>
+      <source srcset="images/drone-final-side.webp" type="image/webp" />
+      <img src="images/drone-final-side.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+    <div class="slide"><picture>
+      <source srcset="images/cannon-1.webp" type="image/webp" />
+      <img src="images/cannon-1.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+    <div class="slide"><picture>
+      <source srcset="images/mouse-rig.webp" type="image/webp" />
+      <img src="images/mouse-rig.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+    <div class="slide"><picture>
+      <source srcset="images/drone-green-top.webp" type="image/webp" />
+      <img src="images/drone-green-top.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+    <div class="slide"><picture>
+      <source srcset="images/mae3-2.webp" type="image/webp" />
+      <img src="images/mae3-2.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
     <p class="eyebrow">Mechanical Engineer · Robotics · Controls · Hardware</p>
     <h1>Farbod Haeri</h1>
-    <h2>I build things that have to work in the real world.</h2>
-    <p class="lead">I work mostly in robotics and controls, and I care about actually building what I design instead of stopping at the CAD model. Right now most of that goes into a six-rotor drone I'm developing in Prof. Bewley's lab at UC San Diego.</p>
+    <p class="tagline">I build things that have to work in the real world.</p>
+    <p class="lead">I work mostly in robotics and controls, and I care about actually building what I design instead of stopping at the CAD model. Right now most of that goes into a six-rotor drone I'm developing in Prof. Bewley's lab at UC San Diego — and an autonomous car taking shape alongside it.</p>
     <div class="hero-cta">
       <a class="btn light" href="#projects">View Projects</a>
       <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       <a class="btn outline" href="https://www.linkedin.com/in/farbodhaeri" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn outline" id="ghlink" href="#" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn outline" href="https://github.com/Farbod97" target="_blank" rel="noopener">GitHub</a>
     </div>
     <div class="facts">
       <span><span class="dot"></span><b>UC San Diego</b>&nbsp;BS/MS Mechanical Eng.</span>
@@ -278,7 +130,7 @@
       <div class="reveal">
         <p>I'm a Mechanical Engineering student at UC San Diego, on the combined BS/MS track, most interested in robotics, controls, and the hands-on side of hardware.</p>
         <p>I started by machining single parts in the shop and kept reaching for bigger systems. Right now I'm in Prof. Thomas Bewley's lab, designing and flying a fully-actuated hexacopter. Before that I built metrology and fatigue-testing pipelines in Prof. Maziar Ghazinejad's materials lab, and earlier I spent two years at Apple's Elk Grove facility working on materials and new-product builds.</p>
-        <p>What I like most is owning a project end to end: designing it, building it, writing the code that runs it, then testing until it actually behaves. That make-it-work part is the side of engineering I care about. Next up, I'm building an autonomous vehicle.</p>
+        <p>What I like most is owning a project end to end: designing it, building it, writing the code that runs it, then testing until it actually behaves. That make-it-work part is the side of engineering I care about. This summer I'm adding the road to the resume: an autonomous car in UCSD's MAE/ECE 148.</p>
       </div>
       <div class="about-card reveal">
         <h4>Quick Facts</h4>
@@ -301,29 +153,37 @@
     <p class="lead-2 reveal">Every project has been a step up from the last, from machining one aluminum part to designing and flying a whole drone. Here is the path so far.</p>
     <div class="journey">
       <div class="step reveal">
-        <div class="step-img"><img loading="lazy" src="images/cannon-1.jpg" alt="Machined aluminum mini cannon" /></div>
+        <div class="step-img"><picture>
+          <source srcset="images/cannon-1.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="Machined aluminum mini cannon" /></picture></div>
         <h4>Where it started</h4>
         <p>A working aluminum cannon, turned and milled in the machine shop. This is where the hands-on building began.</p>
       </div>
       <div class="step reveal">
-        <div class="step-img"><img loading="lazy" src="images/mae3-2.jpg" alt="Yellow MAE3 competition robot" /></div>
+        <div class="step-img"><picture>
+          <source srcset="images/mae3-2.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="Yellow MAE3 competition robot" /></picture></div>
         <h4>Won MAE3</h4>
         <p>Designed and built a competition robot from scratch and took first place.</p>
       </div>
       <div class="step reveal">
-        <div class="step-img"><img loading="lazy" src="images/mouse-rig.jpg" alt="Automated mouse-training rig" /></div>
+        <div class="step-img"><picture>
+          <source srcset="images/mouse-rig.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="Automated mouse-training rig" /></picture></div>
         <h4>Lab systems</h4>
         <p>A senior-design neuroscience rig and materials-metrology pipelines: the hardware and the software to run it.</p>
       </div>
       <div class="step reveal">
-        <div class="step-img"><img loading="lazy" src="images/drone-final-persp.jpg" alt="Finished fixed-tilt hexacopter" /></div>
+        <div class="step-img"><picture>
+          <source srcset="images/drone-final-persp.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="Finished fixed-tilt hexacopter" /></picture></div>
         <h4>Built a drone</h4>
         <p>A fully-actuated hexacopter taken from CAD to a flight-ready aircraft with its own controller.</p>
       </div>
       <div class="step soon reveal">
         <div class="step-img">In progress</div>
-        <h4>Autonomous vehicle</h4>
-        <p>Building a self-driving vehicle now, the mechanical side and the control software together.</p>
+        <h4>Autonomous car</h4>
+        <p>Building a self-driving robocar in UCSD's MAE/ECE 148 right now: ROS 2, computer vision, and the control stack.</p>
       </div>
     </div>
   </div>
@@ -337,7 +197,9 @@
     <div class="grid">
 
       <article class="card reveal">
-        <div class="card-img"><img loading="lazy" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></div>
+        <div class="card-img"><picture>
+          <source srcset="images/drone-final-persp.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></picture></div>
         <div class="card-body">
           <div class="top">
             <div><h4>Fixed-Tilt Hexacopter</h4><div class="org">UAV Controls &amp; Robotics · Bewley Lab, UCSD</div></div>
@@ -346,12 +208,14 @@
           <span class="role">CAD · Fabrication · Controls</span>
           <p>A six-rotor drone whose rotors sit at fixed angles, so it can move in all six directions without a gimbal. It's meant for tracking a target and searching tight spaces like tunnels. I took it from CAD to a flight-ready build: the SolidWorks design, a 3D-printed monocoque airframe, thrust-stand testing of ducted vs. un-ducted props, and a 6-DoF flight controller that I tune in MATLAB and test in our motion-capture room.</p>
           <div class="tags"><span class="tag">SolidWorks</span><span class="tag">MATLAB</span><span class="tag">6-DoF Control</span><span class="tag">3D Printing</span><span class="tag">UAV</span></div>
-          <a class="codelink" href="drone.html">See the full breakdown</a> <span style="margin:0 4px;color:var(--muted)">·</span> <a class="codelink" style="margin-top:0" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">View code</a>
+          <div class="card-links"><a class="codelink" href="drone.html">See the full breakdown</a><a class="codelink" href="https://github.com/Farbod97/Vortahex-Flight-Control" target="_blank" rel="noopener">View code</a></div>
         </div>
       </article>
 
       <article class="card reveal">
-        <div class="card-img"><img loading="lazy" src="images/mouse-rig.jpg" alt="The full automated mouse cognitive-training rig: two chambers, touchscreen modules, and the control box" /></div>
+        <div class="card-img"><picture>
+          <source srcset="images/mouse-rig.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse cognitive-training rig: two chambers, touchscreen modules, and the control box" /></picture></div>
         <div class="card-body">
           <div class="top">
             <div><h4>Automated Mouse Cognitive-Training System</h4><div class="org">Senior Design · Jared Young Lab, UCSD</div></div>
@@ -360,12 +224,14 @@
           <span class="role">Software / UI Engineer</span>
           <p>My senior capstone for a UCSD neuroscience lab: an automated touchscreen rig that trains group-housed mice on the 5-choice task. I handled the software side of it, which meant an operator dashboard (HTML/CSS/JS) with live per-mouse metrics, a Python/Flask "brain" that runs through every training stage in order, and the data-logging plus the Wi-Fi/MQTT link to the hardware.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">MQTT</span><span class="tag">State Machines</span></div>
-          <a class="codelink" href="mouse-system.html">See the full breakdown</a> <span style="margin:0 4px;color:var(--muted)">·</span> <a class="codelink" style="margin-top:0" href="https://github.com/Farbod97/Mouse-traning-system" target="_blank" rel="noopener">View code</a>
+          <div class="card-links"><a class="codelink" href="mouse-system.html">See the full breakdown</a><a class="codelink" href="https://github.com/Farbod97/Mouse-traning-system" target="_blank" rel="noopener">View code</a></div>
         </div>
       </article>
 
       <article class="card reveal">
-        <div class="card-img"><img loading="lazy" src="images/cannon-2.jpg" alt="The machined aluminum scale cannon on its stand" /></div>
+        <div class="card-img"><picture>
+          <source srcset="images/cannon-2.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="The machined aluminum scale cannon on its stand" /></picture></div>
         <div class="card-body">
           <div class="top">
             <div><h4>Machined Mini Cannon</h4><div class="org">Machine Shop Project · UC San Diego</div></div>
@@ -379,7 +245,9 @@
       </article>
 
       <article class="card reveal">
-        <div class="card-img contain"><img loading="lazy" src="images/mae3-2.jpg" alt="The yellow 3D-printed MAE3 competition robot, full view" /></div>
+        <div class="card-img contain"><picture>
+          <source srcset="images/mae3-2.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow 3D-printed MAE3 competition robot, full view" /></picture></div>
         <div class="card-body">
           <div class="top">
             <div><h4>MAE3 Autonomous Robot</h4><div class="org">1st Place · UCSD MAE3 Robot Competition</div></div>
@@ -416,16 +284,28 @@
         </div>
       </article>
 
-      <article class="card soon reveal">
-        <div class="soon-img">Coming soon</div>
+      <article class="card text-only reveal">
         <div class="card-body">
           <div class="top">
-            <div><h4>Autonomous Vehicle</h4><div class="org">Personal Project · In progress</div></div>
-            <div class="yr">In progress</div>
+            <div><h4>StockAI — AI Trading Research System</h4><div class="org">Personal Project</div></div>
+            <div class="yr">2026</div>
+          </div>
+          <span class="role">Software · AI Systems</span>
+          <p>A personal deep-dive into modern software and AI tooling: an automated trading research system that ingests public "smart money" signals (congressional trades, insider filings, 13F whales, activist positions), scores them, and paper-trades a risk-gated portfolio end to end, with backtesting behind every rule. The repo is private since it trades a live account, but I'm happy to walk through the architecture.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">AI Agents</span><span class="tag">REST APIs</span><span class="tag">Backtesting</span><span class="tag">Risk Management</span></div>
+        </div>
+      </article>
+
+      <article class="card soon reveal">
+        <div class="soon-img">In progress</div>
+        <div class="card-body">
+          <div class="top">
+            <div><h4>Autonomous Car</h4><div class="org">MAE/ECE 148 · UC San Diego</div></div>
+            <div class="yr">Summer 2026</div>
           </div>
           <span class="role building">Building now</span>
-          <p>My next build: a self-driving vehicle that brings together the mechanical design, the sensors, and the control and perception software. It's the natural next step after the drone, trading flight for the road. I'll post the full write-up here as it comes together.</p>
-          <div class="tags"><span class="tag">Controls</span><span class="tag">Sensors</span><span class="tag">Perception</span><span class="tag">Path Planning</span></div>
+          <p>A 1/10-scale self-driving car built on UCSD's autonomous-vehicles course stack: ROS 2 nodes for camera-based lane following, then a custom final project on top. It's the natural next step after the drone, trading flight for the road — the full write-up lands here as it comes together.</p>
+          <div class="tags"><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">Controls</span></div>
         </div>
       </article>
 
@@ -476,7 +356,7 @@
       <div class="skillcard reveal"><h4>Manufacturing</h4><div class="chips">
         <span>Manual + CNC Lathe</span><span>CNC Mill</span><span>Waterjet</span><span>Laser Cutter</span><span>FDM 3D Printing</span><span>Soldering (THT + SMD)</span></div></div>
       <div class="skillcard reveal"><h4>Programming</h4><div class="chips">
-        <span>Python</span><span>MATLAB</span><span>Java</span><span>HTML / CSS / JS</span><span>Flask</span></div></div>
+        <span>Python</span><span>MATLAB</span><span>ROS 2</span><span>Java</span><span>HTML / CSS / JS</span><span>Flask</span><span>Git / GitHub</span></div></div>
       <div class="skillcard reveal"><h4>Controls &amp; Test</h4><div class="chips">
         <span>PID</span><span>State-Space / LQR</span><span>Loop Shaping</span><span>Sensor Fusion</span><span>Optical Metrology</span><span>Machine Vision</span></div></div>
     </div>
@@ -487,23 +367,50 @@
 <section id="gallery" class="alt">
   <div class="wrap">
     <div class="sec-head reveal"><span class="num">06</span><h3>Gallery</h3></div>
-    <p class="lead-2 reveal">A few shots of the builds and the work behind them, including how the drone went from a bare frame to flight-ready.</p>
+    <p class="lead-2 reveal">A few shots of the builds and the work behind them, including how the drone went from a bare frame to flight-ready. Tap any photo to enlarge it.</p>
     <div class="ba reveal">
-      <figure><img loading="lazy" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /><figcaption>During the build: bare airframe, electronics exposed, no props yet.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-build-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /></picture><figcaption>During the build: bare airframe, electronics exposed, no props yet.</figcaption></figure>
       <span class="arrow" aria-hidden="true">&rarr;</span>
-      <figure><img loading="lazy" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /><figcaption>Finished: props on, fully wired, and flight-ready.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/drone-final-side.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /></picture><figcaption>Finished: props on, fully wired, and flight-ready.</figcaption></figure>
     </div>
     <div class="masonry">
-      <figure class="reveal"><img loading="lazy" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /><figcaption>The finished hexacopter, back in the lab where it was built.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/cannon-1.jpg" alt="The machined aluminum mini cannon with ball-bearing ammo" /><figcaption>The machined aluminum cannon, where the hands-on work started.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /><figcaption>The full automated mouse-training rig: chambers, touchscreens, and control box.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/drone-final-top.jpg" alt="Top-down view of the finished six-rotor drone" /><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/mae3-2.jpg" alt="The yellow MAE3 competition robot, full view" /><figcaption>The MAE3 robot, 3D-printed and built from scratch.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /><figcaption>Cannon, side profile: turned barrel on a milled stand and base.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /><figcaption>Two touchscreen modules linked by the transfer tube.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/drone-final-side.jpg" alt="Side view of the finished drone" /><figcaption>The ducted-rotor profile, up close.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/mae3-3.jpg" alt="The MAE3 robot with its first-place certificate" /><figcaption>First place, MAE3 Fall 2024.</figcaption></figure>
-      <figure class="reveal"><img loading="lazy" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-final-hold.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /></picture><figcaption>The finished hexacopter, back in the lab where it was built.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/cannon-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The machined aluminum mini cannon with ball-bearing ammo" /></picture><figcaption>The machined aluminum cannon, where the hands-on work started.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/mouse-rig.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /></picture><figcaption>The full automated mouse-training rig: chambers, touchscreens, and control box.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-green-top.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view of the hexacopter with green flight props on the optics bench" /></picture><figcaption>Green flight props on, top down, on the optics bench.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/mae3-2.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow MAE3 competition robot, full view" /></picture><figcaption>The MAE3 robot, 3D-printed and built from scratch.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/cannon-2.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Cannon, side profile: turned barrel on a milled stand and base.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/mouse-modules.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /></picture><figcaption>Two touchscreen modules linked by the transfer tube.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/drone-front.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/drone-front.jpg" alt="The bare hexacopter airframe head-on, on a stool in the lab" /></picture><figcaption>The airframe head-on, between build sessions in the lab.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/mae3-3.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mae3-3.jpg" alt="The MAE3 robot with its first-place certificate" /></picture><figcaption>First place, MAE3 Fall 2024.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/mae3-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mae3-1.jpg" alt="The MAE3 robot's arm, gear train, and drivetrain up close" /></picture><figcaption>The MAE3 robot up close: gear train, arm, and drivetrain.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/mouse-system-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /></picture><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -524,70 +431,15 @@
 <footer>
   <div class="wrap foot-inner">
     <span>© <span id="yr"></span> Farbod Haeri</span>
+    <span class="foot-links">
+      <a href="https://github.com/Farbod97" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/farbodhaeri" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:fhaeri@ucsd.edu">Email</a>
+    </span>
     <span class="mono">San Diego, CA · Built from scratch</span>
   </div>
 </footer>
 
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  function closeMenu(){document.getElementById('links').classList.remove('open');}
-
-  // GitHub link
-  var GH = "https://github.com/Farbod97";
-  var gh = document.getElementById('ghlink');
-  if(GH){ gh.href = GH; } else { gh.style.display='none'; }
-
-  // stagger the reveals within each group so they cascade as you scroll
-  document.querySelectorAll('.grid, .skills, .masonry, .timeline, .about-grid, .journey').forEach(function(group){
-    var kids = group.querySelectorAll('.reveal');
-    kids.forEach(function(el, i){ el.style.transitionDelay = Math.min(i * 0.08, 0.4) + 's'; });
-  });
-
-  // reveal on scroll
-  var obs = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
-  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
-
-  // thin scroll-progress bar
-  var pb = document.getElementById('progress');
-  function onScroll(){
-    var h = document.documentElement;
-    var sc = h.scrollTop || document.body.scrollTop;
-    var max = h.scrollHeight - h.clientHeight;
-    pb.style.width = (max > 0 ? (sc / max * 100) : 0) + '%';
-  }
-  document.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll, {passive:true});
-  onScroll();
-
-  // hero photo slideshow (cross-fade with a slow zoom)
-  var slides = document.querySelectorAll('.hero-slides .slide');
-  if(slides.length){
-    var si = 0; slides[0].classList.add('active');
-    if(slides.length > 1){
-      setInterval(function(){
-        slides[si].classList.remove('active');
-        si = (si + 1) % slides.length;
-        slides[si].classList.add('active');
-      }, 5000);
-    }
-  }
-
-  // email: copy to clipboard (a mailto link does nothing without a default mail app)
-  var eb = document.getElementById('emailBtn');
-  if(eb){
-    eb.addEventListener('click', function(e){
-      if(navigator.clipboard){
-        e.preventDefault();
-        navigator.clipboard.writeText('fhaeri@ucsd.edu').then(function(){
-          var prev = eb.textContent;
-          eb.textContent = 'Copied to clipboard';
-          setTimeout(function(){ eb.textContent = prev; }, 1600);
-        });
-      }
-    });
-  }
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
