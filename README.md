@@ -1,6 +1,6 @@
 # farbodh.com
 
-Personal portfolio of **Farbod Haeri** — mechanical engineer focused on robotics, controls, and hardware. BS/MS Mechanical Engineering, UC San Diego.
+Personal portfolio of **Farbod Haeri**, a mechanical engineer focused on robotics, controls, and hardware. BS/MS Mechanical Engineering, UC San Diego.
 
 **Live site:** [farbodh.com](https://farbodh.com)
 
@@ -12,7 +12,7 @@ Personal portfolio of **Farbod Haeri** — mechanical engineer focused on roboti
 
 ## Tech
 
-Hand-built static site — no frameworks, no build step. Semantic HTML, one shared stylesheet, one shared script.
+Hand-built static site: no frameworks, no build step. Semantic HTML, one shared stylesheet, one shared script.
 
 - Responsive from small phones to 4K TVs (rem-based device tiers)
 - Dark/light theme (system-aware, persisted toggle)
