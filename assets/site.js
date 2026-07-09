@@ -131,8 +131,10 @@
     var xpWrap = document.createElement('div');
     xpWrap.className = 'step-expander';
     var openStep = null;
+    var busy = false;
     var noMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var NAV_OFFSET = 76;
 
     // Last step on the same visual row, so the panel opens directly beneath it.
     function rowLast(step) {
@@ -143,9 +145,9 @@
     function stash() {
       while (xpWrap.firstChild) store.appendChild(xpWrap.firstChild);
     }
-    function afterTransition(fn) {
+    function afterTransition(ms, fn) {
       var done = false;
-      var t = setTimeout(run, 520);
+      var t = setTimeout(run, ms + 80);
       function run(e) {
         if (e && e.target !== xpWrap) return;
         if (done) return;
@@ -156,48 +158,114 @@
       }
       xpWrap.addEventListener('transitionend', run);
     }
+    function setDuration(s) {
+      xpWrap.style.setProperty('--xp-dur', s + 's');
+    }
+    function markStep(step, open) {
+      step.classList.toggle('open', open);
+      step.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    // Keep the clicked step just below the sticky nav while the panel unfolds,
+    // so on a phone the open panel is actually on screen.
+    function scrollToStep(step, panelH) {
+      if (noMotion) return;
+      var rect = step.getBoundingClientRect();
+      var panelBottom = rect.bottom + panelH;
+      if (rect.top < NAV_OFFSET || panelBottom > window.innerHeight) {
+        window.scrollTo({
+          top: rect.top + window.pageYOffset - NAV_OFFSET - 8,
+          behavior: 'smooth'
+        });
+      }
+    }
     function collapse(then) {
       if (!openStep) { if (then) then(); return; }
-      openStep.classList.remove('open');
-      openStep.setAttribute('aria-expanded', 'false');
+      markStep(openStep, false);
       openStep = null;
+      xpWrap.classList.remove('in');
       if (noMotion) {
         stash(); xpWrap.remove();
         if (then) then(); return;
       }
+      setDuration(0.3);
       xpWrap.style.height = xpWrap.scrollHeight + 'px';
       void xpWrap.offsetHeight;
       xpWrap.style.height = '0px';
-      afterTransition(function () {
+      afterTransition(300, function () {
         stash(); xpWrap.remove();
         if (then) then();
       });
     }
     function expand(step) {
       var panel = document.getElementById(step.getAttribute('data-panel'));
-      if (!panel) return;
+      if (!panel) { busy = false; return; }
       stash();
       rowLast(step).insertAdjacentElement('afterend', xpWrap);
       xpWrap.appendChild(panel);
       openStep = step;
-      step.classList.add('open');
-      step.setAttribute('aria-expanded', 'true');
-      if (noMotion) { xpWrap.style.height = 'auto'; return; }
-      xpWrap.style.height = '0px';
-      void xpWrap.offsetHeight;
-      xpWrap.style.height = xpWrap.scrollHeight + 'px';
-      afterTransition(function () {
+      markStep(step, true);
+      if (noMotion) {
         xpWrap.style.height = 'auto';
-        var r = xpWrap.getBoundingClientRect();
-        if (r.bottom > window.innerHeight || r.top < 0) {
-          xpWrap.scrollIntoView({ behavior: noMotion ? 'auto' : 'smooth', block: 'nearest' });
-        }
+        xpWrap.classList.add('in');
+        busy = false;
+        return;
+      }
+      setDuration(0.5);
+      xpWrap.style.height = '0px';
+      xpWrap.classList.remove('in');
+      void xpWrap.offsetHeight;
+      var target = xpWrap.scrollHeight;
+      xpWrap.style.height = target + 'px';
+      xpWrap.classList.add('in');
+      scrollToStep(step, target);
+      afterTransition(500, function () {
+        xpWrap.style.height = 'auto';
+        busy = false;
       });
     }
+    // Same insertion point (same row): morph the panel height in place
+    // instead of collapsing and re-opening.
+    function swapInPlace(step) {
+      var panel = document.getElementById(step.getAttribute('data-panel'));
+      if (!panel) { busy = false; return; }
+      markStep(openStep, false);
+      openStep = step;
+      markStep(step, true);
+      if (noMotion) {
+        stash(); xpWrap.appendChild(panel);
+        xpWrap.style.height = 'auto';
+        busy = false;
+        return;
+      }
+      var h0 = xpWrap.scrollHeight;
+      xpWrap.classList.remove('in');
+      setTimeout(function () {
+        stash(); xpWrap.appendChild(panel);
+        xpWrap.style.height = h0 + 'px';
+        void xpWrap.offsetHeight;
+        setDuration(0.45);
+        var h1 = xpWrap.scrollHeight;
+        xpWrap.style.height = h1 + 'px';
+        xpWrap.classList.add('in');
+        scrollToStep(step, h1);
+        afterTransition(450, function () {
+          xpWrap.style.height = 'auto';
+          busy = false;
+        });
+      }, 140);
+    }
     function toggleStep(step) {
-      if (openStep === step) collapse();
-      else if (openStep) collapse(function () { expand(step); });
-      else expand(step);
+      if (busy) return;
+      busy = true;
+      if (openStep === step) {
+        collapse(function () { busy = false; });
+      } else if (openStep) {
+        var anchor = rowLast(step);
+        if (anchor.nextElementSibling === xpWrap) swapInPlace(step);
+        else collapse(function () { expand(step); });
+      } else {
+        expand(step);
+      }
     }
     jsteps.forEach(function (step) {
       step.addEventListener('click', function () { toggleStep(step); });
@@ -206,7 +274,14 @@
       });
     });
     document.addEventListener('click', function (e) {
-      if (e.target.closest && e.target.closest('.xp-close')) collapse();
+      if (e.target.closest && e.target.closest('.xp-close')) {
+        if (!busy) { busy = true; collapse(function () { busy = false; }); }
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && openStep && !document.querySelector('.lightbox.open')) {
+        if (!busy) { busy = true; collapse(function () { busy = false; }); }
+      }
     });
     // Column count changes on resize; keep the panel under its step.
     var rsz;
