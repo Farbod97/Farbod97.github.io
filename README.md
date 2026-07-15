@@ -1,6 +1,6 @@
 # farbodh.com
 
-Personal portfolio of **Farbod Haeri**, a mechanical engineer focused on robotics, controls, and hardware. BS/MS Mechanical Engineering, UC San Diego.
+Personal portfolio of **Farbod Haeri**, a mechanical engineer focused on robotics, controls, and hardware. M.S. Mechanical Engineering student, UC San Diego.
 
 **Live site:** [farbodh.com](https://farbodh.com)
 
