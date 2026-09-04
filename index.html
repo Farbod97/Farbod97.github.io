@@ -107,7 +107,7 @@
     <p class="eyebrow">Mechanical Engineer · Robotics · Controls · Hardware</p>
     <h1>Farbod Haeri</h1>
     <p class="tagline">I build machines that have to survive the real world.</p>
-    <p class="lead">I work in robotics and controls, and I don't stop at the CAD model. A design isn't finished until it flies, drives, or survives the test stand. Right now that means a six-rotor drone I'm developing in Prof. Bewley's lab at UC San Diego, with an autonomous car right behind it.</p>
+    <p class="lead">I work in robotics and controls, and I don't stop at the CAD model. A design isn't finished until it flies, drives, or survives the test stand. Right now that means a six-rotor drone I'm developing in Prof. Bewley's lab at UC San Diego, and a self-driving car that surveys terrain on its own.</p>
     <div class="hero-cta">
       <a class="btn light" href="#projects">View Projects</a>
       <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
@@ -130,7 +130,7 @@
     <div class="about-grid">
       <div class="reveal">
         <p>I'm a Mechanical Engineering graduate student at UC San Diego, focused on robotics, controls, and hardware. My work covers the full build cycle: CAD and CNC machining, control design in MATLAB, and the software that ties a system together.</p>
-        <p>Before UCSD I spent two years at Apple's Elk Grove facility supporting new-product builds across 500+ SKUs, and completed a student-engineer internship with the County of Sacramento, benchmarking energy use across 120+ buildings. Today I'm a graduate researcher in Prof. Thomas Bewley's lab, where I design, build, and fly a fully-actuated hexacopter, with an autonomous vehicle project underway this summer.</p>
+        <p>Before UCSD I spent two years at Apple's Elk Grove facility supporting new-product builds across 500+ SKUs, and completed a student-engineer internship with the County of Sacramento, benchmarking energy use across 120+ buildings. Today I'm a graduate researcher in Prof. Thomas Bewley's lab, where I design, build, and fly a fully-actuated hexacopter. This summer I also built a self-driving car that surveys vegetation on its own and reports what it finds.</p>
       </div>
       <div class="about-card reveal">
         <h4>Quick Facts</h4>
@@ -209,10 +209,12 @@
       </div>
 
       <div class="step reveal" data-panel="xp-car" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-car">
-        <div class="step-img tile" aria-hidden="true">In progress</div>
-        <span class="yr">Now</span>
+        <div class="step-img"><picture>
+          <source srcset="images/car-detect-3.webp" type="image/webp" />
+          <img loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="Trees and shrubs detected and boxed by the car's onboard model" /></picture></div>
+        <span class="yr">2026</span>
         <h4>Autonomous car <span class="chev" aria-hidden="true">+</span></h4>
-        <p>A self-driving car I'm building at UC San Diego: ROS 2, vision, controls.</p>
+        <p>A self-driving car that surveys vegetation and writes its own report.</p>
       </div>
 
     </div>
@@ -505,18 +507,34 @@
     </div>
   </div>
 
-  <div id="xp-car" class="xp xp-solo">
+  <div id="xp-car" class="xp">
     <div class="xp-head">
       <div>
-        <h4>Autonomous Car</h4>
+        <h4>Autonomous Survey Rover</h4>
         <div class="org">Autonomous Vehicles Program · UC San Diego · Summer 2026</div>
       </div>
       <button class="xp-close" type="button" aria-label="Close details">&#10005;</button>
     </div>
     <div class="xp-main">
-      <span class="role">Building now</span>
-      <p>A 1/10-scale self-driving car built on UCSD's autonomous-vehicles course stack: ROS 2 nodes for camera-based lane following, then a custom final project on top. It's the natural next step after the drone, trading flight for the road. The full write-up lands here as it comes together.</p>
-      <div class="tags"><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">Controls</span></div>
+      <span class="role">Perception · Autonomy · Embedded AI</span>
+      <p>A 1/10-scale car that surveys vegetation on its own. Press one button in a browser and it brings up centimetre-accurate GPS, drives a saved route with no driver, identifies trees, shrubs, and people from its camera as it moves, stops itself when the loop closes, and writes the report.</p>
+      <p>The detection runs on the car, on a 26 TOPS accelerator, not on a laptop and not in the cloud. I trained the model by having a large vision model label our own footage, then distilling that into a small one built for the chip. On hardware it holds 0.735 mAP50 at 41.8 frames per second, roughly forty times what the same model managed on the onboard CPU.</p>
+      <div class="tags"><span class="tag">Computer Vision</span><span class="tag">Edge AI</span><span class="tag">RTK GPS</span><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">Controls</span></div>
+      <div class="card-links"><a class="codelink" href="robocar.html">See the full breakdown</a></div>
+    </div>
+    <div class="xp-photos">
+      <figure><picture>
+        <source srcset="images/car-detect-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-detect-1.jpg" alt="Trees and shrubs boxed with confidence scores by the onboard model" /></picture><figcaption>What the car sees while it drives.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/car-detect-3.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="A dense row of trees and shrubs boxed by the model" /></picture><figcaption>A dense stretch, boxed at speed.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/car-detect-2.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-detect-2.jpg" alt="Dense vegetation detected along the route" /></picture><figcaption>Dense growth, boxed at speed.</figcaption></figure>
+      <figure><picture>
+        <source srcset="images/car-track.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-track.jpg" alt="The outdoor course at UC San Diego with the cars on it" /></picture><figcaption>The course the routes were recorded on.</figcaption></figure>
     </div>
   </div>
 

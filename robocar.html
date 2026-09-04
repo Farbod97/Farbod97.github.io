@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Autonomous Survey Rover | Farbod Haeri</title>
+<meta name="description" content="A self-driving car built by Farbod Haeri at UC San Diego that surveys vegetation on its own: centimetre-accurate GPS, object detection running on a 26 TOPS accelerator aboard the vehicle, and a written report at the end of every lap." />
+<link rel="canonical" href="https://farbodh.com/robocar.html" />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://farbodh.com/robocar.html" />
+<meta property="og:title" content="Autonomous Survey Rover · Farbod Haeri" />
+<meta property="og:description" content="One button starts it. The car drives a saved route with no driver, identifies trees, shrubs, and people as it moves, and writes the report itself." />
+<meta property="og:image" content="https://farbodh.com/images/car-detect-3.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Farbod<span>.</span>Haeri</a>
+    <div class="nav-actions">
+      <a class="back" href="index.html#projects">Back to projects</a>
+      <button class="theme-toggle" type="button" aria-label="Switch between dark and light mode">
+        <span class="moon" aria-hidden="true">&#9789;</span><span class="sun" aria-hidden="true">&#9788;</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero sub">
+  <div class="hero-slides" aria-hidden="true">
+    <div class="slide"><picture>
+      <source srcset="images/car-detect-3.webp" type="image/webp" />
+      <img src="images/car-detect-3.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+    <div class="slide"><picture>
+      <source srcset="images/car-detect-1.webp" type="image/webp" />
+      <img src="images/car-detect-1.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+  </div>
+  <div class="hero-tint" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Autonomous Vehicles Program · UC San Diego</p>
+    <h1>Autonomous Survey Rover</h1>
+    <p>A 1/10-scale car that surveys vegetation on its own. One button starts it. It drives a saved route with no driver, identifies what it passes as it moves, and writes the report itself.</p>
+    <div class="meta">
+      <span>Summer 2026</span>
+      <span>Team of three</span>
+      <span>Role: Perception, autonomy, software</span>
+      <span>114.7 m autonomous lap</span>
+    </div>
+  </div>
+</section>
+
+<main class="sub">
+<section>
+  <div class="wrap">
+    <h2 class="kicker">The idea</h2>
+    <p class="body lede">Counting vegetation across a site is slow, manual work. Somebody walks the ground with a clipboard, and the answer is only as good as their patience.</p>
+    <p class="body">This car does the walk instead. It follows a route recorded once, holds its position to a few centimetres using corrected GPS, and identifies trees, shrubs, and people from its camera while it is moving. Every detection is stamped with where the car was standing when it fired, so the output is not just a count: it is a count placed on a map. When the loop closes, the car stops itself and writes up what it found.</p>
+    <p class="body">The constraint that shaped everything: <strong>the thinking has to happen on the vehicle.</strong> No laptop in the loop, no cloud round trip. A survey robot that needs a network connection is not much use in the places surveys are needed.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="kicker">One lap, measured</h2>
+    <div class="stats">
+      <div class="stat"><b>114.7&#8202;m</b><span>autonomous lap, closed within 5 m</span></div>
+      <div class="stat"><b>0.735</b><span>mAP50 measured on the accelerator</span></div>
+      <div class="stat"><b>41.8</b><span>frames per second on-vehicle</span></div>
+      <div class="stat"><b>9,227</b><span>detections placed on the map</span></div>
+    </div>
+    <p class="body" style="margin-top:18px">That lap found 25 trees, 26 shrubs, and 7 people. The counts are deliberately conservative: with no depth sensor, detections within three metres of each other are merged into one object, so two trees passed close together count once. The report says so on every run. A number you can trust the direction of is worth more than a number that flatters the robot.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="kicker">What I built</h2>
+    <p class="body">The car is the platform. The survey system on top of it is mine, and it splits into four pieces.</p>
+    <div class="built">
+      <div class="item reveal">
+        <h4>A model that fits the chip</h4>
+        <code>Knowledge distillation</code>
+        <p>Nobody had a labelled dataset of this campus. So a large, slow vision model labelled our own footage, and I trained a small fast one on those labels. The student runs on the accelerator; the teacher never leaves the desk.</p>
+      </div>
+      <div class="item reveal">
+        <h4>Detection on the vehicle</h4>
+        <code>26 TOPS accelerator</code>
+        <p>Compiling the model for the chip meant cutting the network before its detection head, which the compiler cannot parse, and letting the silicon decode the boxes instead. Forty times the throughput of the onboard processor.</p>
+      </div>
+      <div class="item reveal">
+        <h4>Positioning and lap logic</h4>
+        <code>RTK GPS</code>
+        <p>Corrected GPS puts the car within centimetres instead of metres. A watcher anchors on the car's own starting point and ends the run only when it has driven most of the loop and come back, so a lap cannot be called early.</p>
+      </div>
+      <div class="item reveal">
+        <h4>The operator's view</h4>
+        <code>Live dashboard</code>
+        <p>A browser page that starts the run, streams the camera with boxes drawn as they are found, counts objects as they appear, and keeps the video and the report when the car stops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="kicker">How it works</h2>
+    <div class="flow">
+      <div class="node reveal">
+        <div class="k">Camera + RTK GPS</div>
+        <h4>Sense</h4>
+        <p>Frames land on disk tagged with the position of the car at that instant.</p>
+      </div>
+      <div class="link">feeds</div>
+      <div class="node reveal">
+        <div class="k">On-board accelerator</div>
+        <h4>Detect</h4>
+        <p>Each frame is classified into trees, shrubs, and people while the car keeps driving.</p>
+      </div>
+      <div class="link">becomes</div>
+      <div class="node reveal">
+        <div class="k">Cluster and report</div>
+        <h4>Understand</h4>
+        <p>Nearby detections merge into distinct objects, then a language model writes the survey up.</p>
+      </div>
+    </div>
+    <p class="body" style="margin-top:14px">The route below is one real lap. The grey line is where the car drove, and every dot is a merged detection placed at the position the car held when it saw it.</p>
+    <div class="diagram" style="margin-top:18px">
+      <figure><img loading="lazy" decoding="async" src="images/car-route.svg" alt="The driven loop with detection clusters coloured by category" /><figcaption>One lap: the closed route, every cluster placed.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="kicker">What went wrong</h2>
+    <p class="body">Three failures were worth more than the successes, because none of them announced themselves.</p>
+    <p class="body"><strong>The accelerator was silently doing nothing.</strong> Every inference failed and returned an empty result, but our own hardware self-test passed the whole time because it ran under a different Python environment than the live system did. A green test is not proof; it is proof of what it tested.</p>
+    <p class="body"><strong>Resizing the image cost more accuracy than quantising the model.</strong> Squashing frames to a square distorts them. Preserving the aspect ratio and padding instead was worth 28 percent relative accuracy, far more than anything gained by tuning the network.</p>
+    <p class="body"><strong>Two copies of a service fought over one serial port.</strong> A watchdog restarted a wedged process without confirming the old one had died, so both held the GPS control port and neither could talk to it. Precision sat at metres instead of centimetres for a whole session. Two of something is sometimes strictly worse than none.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="kicker">Tech</h2>
+    <div class="chips">
+      <span>Computer Vision</span><span>YOLO</span><span>Knowledge Distillation</span><span>Edge AI</span><span>Model Quantisation</span><span>RTK GNSS</span><span>ROS 2</span><span>Python</span><span>Sensor Fusion</span><span>Spatial Clustering</span><span>Linux</span><span>Systemd</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="kicker">Gallery</h2>
+    <div class="gallery">
+      <figure class="reveal"><picture>
+        <source srcset="images/car-detect-3.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="A dense row of trees and shrubs boxed with confidence scores" /></picture><figcaption>A dense stretch of the route, boxed while moving.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/car-detect-1.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-detect-1.jpg" alt="Trees identified with confidence scores above ninety percent" /></picture><figcaption>Confidences above ninety percent on the clearer trees.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/car-detect-2.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-detect-2.jpg" alt="Vegetation and a person detected along the path" /></picture><figcaption>Vegetation and people, separated by category.</figcaption></figure>
+      <figure class="reveal"><picture>
+        <source srcset="images/car-track.webp" type="image/webp" />
+        <img loading="lazy" decoding="async" src="images/car-track.jpg" alt="The outdoor course at UC San Diego with several small autonomous cars on it" /></picture><figcaption>The course where the routes were recorded.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="kicker">More</h2>
+    <p class="body">There is more of my work on the main site.</p>
+    <div class="links-row">
+      <a class="btn ghost" href="index.html#projects">Back to projects</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="center">
+  <div class="wrap">© <span id="yr"></span> Farbod Haeri · San Diego, CA</div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

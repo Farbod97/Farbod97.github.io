@@ -462,3 +462,14 @@ footer.center .wrap{display:block}
   .reveal{opacity:1;transform:none}
   body{background:#fff;color:#000}
 }
+
+/* Diagram figures. Unlike .ba photos these must never be cropped: a route plot
+   loses its meaning the moment the top and bottom are cut off. */
+.diagram{margin:0 auto 1.625rem;max-width:31rem;border:1px solid var(--line);
+  border-radius:.875rem;overflow:hidden;background:var(--card);counter-reset:fig}
+.diagram figure{margin:0;counter-increment:fig}
+.diagram img{display:block;width:100%;height:auto}
+.diagram figcaption{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  font-size:.72rem;letter-spacing:.01em;color:var(--muted);padding:.56rem .8rem}
+.diagram figcaption::before{content:"Fig. " counter(fig,decimal-leading-zero);
+  color:var(--accent);margin-right:.6rem;font-weight:500}
