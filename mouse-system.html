@@ -16,9 +16,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -37,12 +35,12 @@
 
 <section class="hero sub">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide"><picture>
+    <div class="slide active"><picture>
       <source srcset="images/mouse-rig.webp" type="image/webp" />
-      <img src="images/mouse-rig.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+      <img width="1600" height="1200" src="images/mouse-rig.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/mouse-modules.webp" type="image/webp" />
-      <img src="images/mouse-modules.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/mouse-modules.webp" type="image/webp" />
+      <img width="1600" height="1200" data-src="images/mouse-modules.jpg" alt="" decoding="async" /></picture></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -136,16 +134,16 @@
     <div class="gallery">
       <figure class="reveal"><picture>
         <source srcset="images/mouse-rig.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full mouse-training rig: two cages joined by the RFID airlock and gate actuators" /></picture><figcaption>The built system: two group-housing cages joined by the RFID airlock, gate actuators, and the control box.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full mouse-training rig: two cages joined by the RFID airlock and gate actuators" /></picture><figcaption>The built system: two group-housing cages joined by the RFID airlock, gate actuators, and the control box.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mouse-modules.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="The two touchscreen modules linked by the transfer tube" /></picture><figcaption>The two touchscreen modules and the clear transfer tube the mice pass through.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="The two touchscreen modules linked by the transfer tube" /></picture><figcaption>The two touchscreen modules and the clear transfer tube the mice pass through.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mouse-system-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Farbod presenting the project at the senior design showcase" /></picture><figcaption>Presenting the system at the UC San Diego senior design showcase, dashboard running live.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Farbod presenting the project at the senior design showcase" /></picture><figcaption>Presenting the system at the UC San Diego senior design showcase, dashboard running live.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mouse-system-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-system-2.jpg" alt="Another view of the assembled training rig" /></picture><figcaption>Another view of the assembled rig during testing.</figcaption></figure>
+        <img width="1600" height="756" loading="lazy" decoding="async" src="images/mouse-system-2.jpg" alt="Another view of the assembled training rig" /></picture><figcaption>Another view of the assembled rig during testing.</figcaption></figure>
     </div>
   </div>
 </section>

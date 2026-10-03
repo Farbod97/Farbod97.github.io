@@ -2,6 +2,9 @@
 (function () {
   'use strict';
 
+  /* ---------- press feedback on iOS (Safari needs a touch listener for :active) ---------- */
+  document.addEventListener('touchstart', function () {}, { passive: true });
+
   /* ---------- footer year ---------- */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
@@ -59,7 +62,7 @@
   document.querySelectorAll('.grid, .skills, .masonry, .timeline, .about-grid, .journey, .built, .flow, .gallery')
     .forEach(function (group) {
       group.querySelectorAll('.reveal').forEach(function (el, i) {
-        el.style.transitionDelay = Math.min(i * 0.08, 0.4) + 's';
+        el.style.transitionDelay = Math.min(i * 0.05, 0.2) + 's';
       });
     });
   if ('IntersectionObserver' in window) {
@@ -67,20 +70,25 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- scroll progress bar ---------- */
+  /* ---------- scroll progress bar (one transform per frame, no layout) ---------- */
   var pb = document.getElementById('progress');
   if (pb) {
-    var onScroll = function () {
+    var ticking = false;
+    var paint = function () {
+      ticking = false;
       var h = document.documentElement;
       var sc = h.scrollTop || document.body.scrollTop;
       var max = h.scrollHeight - h.clientHeight;
-      pb.style.width = (max > 0 ? (sc / max * 100) : 0) + '%';
+      pb.style.transform = 'scaleX(' + (max > 0 ? sc / max : 0) + ')';
+    };
+    var onScroll = function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(paint); }
     };
     document.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
@@ -108,16 +116,37 @@
     });
   }
 
-  /* ---------- hero slideshow (pauses when the tab is hidden) ---------- */
+  /* ---------- hero slideshow (pauses when the tab is hidden) ----------
+     Only the first photo loads with the page. The others carry data-src /
+     data-srcset and load once the page has finished, so they never compete
+     with the first paint. A slide is only shown once its photo is ready. */
   var slides = document.querySelectorAll('.hero-slides .slide');
   if (slides.length) {
     var si = 0;
-    slides[0].classList.add('active');
+    slides[0].classList.add('active'); // already set in the HTML, so the first photo paints immediately
     if (slides.length > 1) {
+      var loadRest = function () {
+        slides.forEach(function (sl) {
+          sl.querySelectorAll('source[data-srcset]').forEach(function (el) {
+            el.srcset = el.getAttribute('data-srcset'); el.removeAttribute('data-srcset');
+          });
+          sl.querySelectorAll('img[data-src]').forEach(function (el) {
+            el.src = el.getAttribute('data-src'); el.removeAttribute('data-src');
+          });
+        });
+      };
+      if (document.readyState === 'complete') loadRest();
+      else window.addEventListener('load', loadRest, { once: true });
+      var ready = function (sl) {
+        var img = sl.querySelector('img');
+        return img && !img.hasAttribute('data-src') && img.complete && img.naturalWidth > 0;
+      };
       setInterval(function () {
         if (document.hidden) return;
+        var next = (si + 1) % slides.length;
+        if (!ready(slides[next])) return;
         slides[si].classList.remove('active');
-        si = (si + 1) % slides.length;
+        si = next;
         slides[si].classList.add('active');
       }, 5000);
     }
@@ -187,11 +216,11 @@
         stash(); xpWrap.remove();
         if (then) then(); return;
       }
-      setDuration(0.3);
+      setDuration(0.28);
       xpWrap.style.height = xpWrap.scrollHeight + 'px';
       void xpWrap.offsetHeight;
       xpWrap.style.height = '0px';
-      afterTransition(300, function () {
+      afterTransition(280, function () {
         stash(); xpWrap.remove();
         if (then) then();
       });
@@ -210,7 +239,7 @@
         busy = false;
         return;
       }
-      setDuration(0.5);
+      setDuration(0.45);
       xpWrap.style.height = '0px';
       xpWrap.classList.remove('in');
       void xpWrap.offsetHeight;
@@ -218,7 +247,7 @@
       xpWrap.style.height = target + 'px';
       xpWrap.classList.add('in');
       scrollToStep(step, target);
-      afterTransition(500, function () {
+      afterTransition(450, function () {
         xpWrap.style.height = 'auto';
         busy = false;
       });
@@ -243,16 +272,16 @@
         stash(); xpWrap.appendChild(panel);
         xpWrap.style.height = h0 + 'px';
         void xpWrap.offsetHeight;
-        setDuration(0.45);
+        setDuration(0.4);
         var h1 = xpWrap.scrollHeight;
         xpWrap.style.height = h1 + 'px';
         xpWrap.classList.add('in');
         scrollToStep(step, h1);
-        afterTransition(450, function () {
+        afterTransition(400, function () {
           xpWrap.style.height = 'auto';
           busy = false;
         });
-      }, 140);
+      }, 120);
     }
     function toggleStep(step) {
       if (busy) return;

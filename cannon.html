@@ -16,9 +16,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -37,12 +35,12 @@
 
 <section class="hero sub">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide"><picture>
+    <div class="slide active"><picture>
       <source srcset="images/cannon-1.webp" type="image/webp" />
-      <img src="images/cannon-1.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+      <img width="1500" height="1276" src="images/cannon-1.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/cannon-2.webp" type="image/webp" />
-      <img src="images/cannon-2.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/cannon-2.webp" type="image/webp" />
+      <img width="1500" height="1318" data-src="images/cannon-2.jpg" alt="" decoding="async" /></picture></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -134,11 +132,11 @@
     <div class="ba">
       <figure><picture>
         <source srcset="images/cannon-cad.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly of the cannon" /></picture><figcaption>The SolidWorks assembly.</figcaption></figure>
+        <img width="978" height="783" loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly of the cannon" /></picture><figcaption>The SolidWorks assembly.</figcaption></figure>
       <span class="arrow" aria-hidden="true">&rarr;</span>
       <figure><picture>
         <source srcset="images/cannon-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon" /></picture><figcaption>The finished part, turned and polished.</figcaption></figure>
+        <img width="1500" height="1276" loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon" /></picture><figcaption>The finished part, turned and polished.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -158,16 +156,16 @@
     <div class="gallery">
       <figure class="reveal"><picture>
         <source srcset="images/cannon-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon with ball-bearing ammo" /></picture><figcaption>The finished cannon, with a stack of ball bearings for scale.</figcaption></figure>
+        <img width="1500" height="1276" loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon with ball-bearing ammo" /></picture><figcaption>The finished cannon, with a stack of ball bearings for scale.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/cannon-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Side profile: turned barrel on the milled trunnion and base.</figcaption></figure>
+        <img width="1500" height="1318" loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Side profile: turned barrel on the milled trunnion and base.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/cannon-cad.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly render of the cannon" /></picture><figcaption>The SolidWorks assembly it started from.</figcaption></figure>
+        <img width="978" height="783" loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly render of the cannon" /></picture><figcaption>The SolidWorks assembly it started from.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/cannon-drawing.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-drawing.jpg" alt="A dimensioned engineering drawing of the cannon barrel and its thread" /></picture><figcaption>One of the part drawings: the barrel and its 3/4-16 UNF thread.</figcaption></figure>
+        <img width="1500" height="1159" loading="lazy" decoding="async" src="images/cannon-drawing.jpg" alt="A dimensioned engineering drawing of the cannon barrel and its thread" /></picture><figcaption>One of the part drawings: the barrel and its 3/4-16 UNF thread.</figcaption></figure>
     </div>
   </div>
 </section>

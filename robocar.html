@@ -16,9 +16,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -37,12 +35,12 @@
 
 <section class="hero sub">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide"><picture>
+    <div class="slide active"><picture>
       <source srcset="images/car-detect-3.webp" type="image/webp" />
-      <img src="images/car-detect-3.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+      <img width="640" height="360" src="images/car-detect-3.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/car-detect-1.webp" type="image/webp" />
-      <img src="images/car-detect-1.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/car-detect-1.webp" type="image/webp" />
+      <img width="640" height="360" data-src="images/car-detect-1.jpg" alt="" decoding="async" /></picture></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -134,7 +132,7 @@
     </div>
     <p class="body" style="margin-top:14px">The route below is one real lap. The grey line is where the car drove, and every dot is a merged detection placed at the position the car held when it saw it.</p>
     <div class="diagram" style="margin-top:18px">
-      <figure><img loading="lazy" decoding="async" src="images/car-route.svg" alt="The driven loop with detection clusters coloured by category" /><figcaption>One lap: the closed route, every cluster placed.</figcaption></figure>
+      <figure><img width="560" height="560" loading="lazy" decoding="async" src="images/car-route.svg" alt="The driven loop with detection clusters coloured by category" /><figcaption>One lap: the closed route, every cluster placed.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -164,16 +162,16 @@
     <div class="gallery">
       <figure class="reveal"><picture>
         <source srcset="images/car-detect-3.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="A dense row of trees and shrubs boxed with confidence scores" /></picture><figcaption>A dense stretch of the route, boxed while moving.</figcaption></figure>
+        <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="A dense row of trees and shrubs boxed with confidence scores" /></picture><figcaption>A dense stretch of the route, boxed while moving.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/car-detect-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-detect-1.jpg" alt="Trees identified with confidence scores above ninety percent" /></picture><figcaption>Confidences above ninety percent on the clearer trees.</figcaption></figure>
+        <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-1.jpg" alt="Trees identified with confidence scores above ninety percent" /></picture><figcaption>Confidences above ninety percent on the clearer trees.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/car-detect-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-detect-2.jpg" alt="Vegetation and a person detected along the path" /></picture><figcaption>Vegetation and people, separated by category.</figcaption></figure>
+        <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-2.jpg" alt="Vegetation and a person detected along the path" /></picture><figcaption>Vegetation and people, separated by category.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/car-track.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-track.jpg" alt="The outdoor course at UC San Diego with several small autonomous cars on it" /></picture><figcaption>The course where the routes were recorded.</figcaption></figure>
+        <img width="750" height="1000" loading="lazy" decoding="async" src="images/car-track.jpg" alt="The outdoor course at UC San Diego with several small autonomous cars on it" /></picture><figcaption>The course where the routes were recorded.</figcaption></figure>
     </div>
   </div>
 </section>

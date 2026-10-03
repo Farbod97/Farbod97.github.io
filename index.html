@@ -28,9 +28,7 @@
 <!-- set theme before first paint to avoid a flash -->
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" as="image" href="images/drone-final-side.webp" type="image/webp" />
 <link rel="stylesheet" href="assets/style.css" />
 
@@ -85,29 +83,28 @@
 <a id="top"></a>
 <section class="hero">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide"><picture>
+    <div class="slide active"><picture>
       <source srcset="images/drone-final-side.webp" type="image/webp" />
-      <img src="images/drone-final-side.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+      <img width="1500" height="1100" src="images/drone-final-side.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/cannon-1.webp" type="image/webp" />
-      <img src="images/cannon-1.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/cannon-1.webp" type="image/webp" />
+      <img width="1500" height="1276" data-src="images/cannon-1.jpg" alt="" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/mouse-rig.webp" type="image/webp" />
-      <img src="images/mouse-rig.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/mouse-rig.webp" type="image/webp" />
+      <img width="1600" height="1200" data-src="images/mouse-rig.jpg" alt="" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/drone-green-top.webp" type="image/webp" />
-      <img src="images/drone-green-top.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/drone-green-top.webp" type="image/webp" />
+      <img width="1600" height="1200" data-src="images/drone-green-top.jpg" alt="" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/mae3-2.webp" type="image/webp" />
-      <img src="images/mae3-2.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/mae3-2.webp" type="image/webp" />
+      <img width="1600" height="1200" data-src="images/mae3-2.jpg" alt="" decoding="async" /></picture></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
     <p class="avail"><span class="pulse" aria-hidden="true"></span>Available for robotics &amp; aerospace roles</p>
     <p class="eyebrow">Mechanical Engineer · Robotics · Controls · Hardware</p>
     <h1>Farbod Haeri</h1>
-    <p class="tagline">I build machines that have to survive the real world.</p>
-    <p class="lead">I work in robotics and controls, and I don't stop at the CAD model. A design isn't finished until it flies, drives, or survives the test stand. Right now that means a six-rotor drone I'm developing in Prof. Bewley's lab at UC San Diego, and a self-driving car that surveys terrain on its own.</p>
+    <p class="motto">Time to build.</p>
     <div class="hero-cta">
       <a class="btn light" href="#projects">View Projects</a>
       <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
@@ -157,7 +154,7 @@
       <div class="step reveal" data-panel="xp-cannon" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-cannon">
         <div class="step-img"><picture>
           <source srcset="images/cannon-1.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="Machined aluminum mini cannon" /></picture></div>
+          <img width="1500" height="1276" loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="Machined aluminum mini cannon" /></picture></div>
         <span class="yr">2024</span>
         <h4>Where it started <span class="chev" aria-hidden="true">+</span></h4>
         <p>A working aluminum cannon, turned and milled in the machine shop.</p>
@@ -166,7 +163,7 @@
       <div class="step reveal" data-panel="xp-mae3" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-mae3">
         <div class="step-img"><picture>
           <source srcset="images/mae3-2.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="Yellow competition robot" /></picture></div>
+          <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="Yellow competition robot" /></picture></div>
         <span class="yr">Fall 2024</span>
         <h4>First-place robot <span class="chev" aria-hidden="true">+</span></h4>
         <p>A competition robot built from scratch that took first place.</p>
@@ -175,7 +172,7 @@
       <div class="step reveal" data-panel="xp-metrology" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-metrology">
         <div class="step-img"><picture>
           <source srcset="images/metrology-art.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/metrology-art.jpg" alt="" /></picture></div>
+          <img width="916" height="410" loading="lazy" decoding="async" src="images/metrology-art.jpg" alt="" /></picture></div>
         <span class="yr">2025</span>
         <h4>Materials &amp; metrology <span class="chev" aria-hidden="true">+</span></h4>
         <p>Fatigue-life data pipelines in an advanced-materials lab.</p>
@@ -184,7 +181,7 @@
       <div class="step reveal" data-panel="xp-software" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-software">
         <div class="step-img"><picture>
           <source srcset="images/software-art.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/software-art.jpg" alt="" /></picture></div>
+          <img width="1000" height="703" loading="lazy" decoding="async" src="images/software-art.jpg" alt="" /></picture></div>
         <span class="yr">2025/26</span>
         <h4>The software side <span class="chev" aria-hidden="true">+</span></h4>
         <p>Numerical methods from scratch, then a full AI trading system.</p>
@@ -193,7 +190,7 @@
       <div class="step reveal" data-panel="xp-mouse" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-mouse">
         <div class="step-img"><picture>
           <source srcset="images/mouse-rig.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="Automated mouse-training rig" /></picture></div>
+          <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="Automated mouse-training rig" /></picture></div>
         <span class="yr">2026</span>
         <h4>Lab systems <span class="chev" aria-hidden="true">+</span></h4>
         <p>An automated neuroscience rig. I wrote the software that runs it.</p>
@@ -202,7 +199,7 @@
       <div class="step reveal" data-panel="xp-drone" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-drone">
         <div class="step-img"><picture>
           <source srcset="images/drone-final-persp.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="Finished fixed-tilt hexacopter" /></picture></div>
+          <img width="1251" height="1380" loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="Finished fixed-tilt hexacopter" /></picture></div>
         <span class="yr">2026</span>
         <h4>Built a drone <span class="chev" aria-hidden="true">+</span></h4>
         <p>A fully-actuated hexacopter taken from CAD to flight-ready.</p>
@@ -211,7 +208,7 @@
       <div class="step reveal" data-panel="xp-car" role="button" tabindex="0" aria-expanded="false" aria-controls="xp-car">
         <div class="step-img"><picture>
           <source srcset="images/car-detect-3.webp" type="image/webp" />
-          <img loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="Trees and shrubs detected and boxed by the car's onboard model" /></picture></div>
+          <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="Trees and shrubs detected and boxed by the car's onboard model" /></picture></div>
         <span class="yr">2026</span>
         <h4>Autonomous car <span class="chev" aria-hidden="true">+</span></h4>
         <p>A self-driving car that surveys vegetation and writes its own report.</p>
@@ -279,46 +276,46 @@
     <div class="ba reveal">
       <figure><picture>
         <source srcset="images/drone-build-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /></picture><figcaption>During the build: bare airframe, electronics exposed, no props yet.</figcaption></figure>
+        <img width="1125" height="1500" loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /></picture><figcaption>During the build: bare airframe, electronics exposed, no props yet.</figcaption></figure>
       <span class="arrow" aria-hidden="true">&rarr;</span>
       <figure><picture>
         <source srcset="images/drone-final-side.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /></picture><figcaption>Finished: props on, fully wired, and flight-ready.</figcaption></figure>
+        <img width="1500" height="1100" loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /></picture><figcaption>Finished: props on, fully wired, and flight-ready.</figcaption></figure>
     </div>
     <div class="masonry">
       <figure class="reveal"><picture>
         <source srcset="images/drone-final-hold.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /></picture><figcaption>The finished hexacopter, back in the lab where it was built.</figcaption></figure>
+        <img width="854" height="1400" loading="lazy" decoding="async" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /></picture><figcaption>The finished hexacopter, back in the lab where it was built.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/cannon-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The machined aluminum mini cannon with ball-bearing ammo" /></picture><figcaption>The machined aluminum cannon, where the hands-on work started.</figcaption></figure>
+        <img width="1500" height="1276" loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The machined aluminum mini cannon with ball-bearing ammo" /></picture><figcaption>The machined aluminum cannon, where the hands-on work started.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mouse-rig.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /></picture><figcaption>The full automated mouse-training rig: chambers, touchscreens, and control box.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /></picture><figcaption>The full automated mouse-training rig: chambers, touchscreens, and control box.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-green-top.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view of the hexacopter with green flight props on the optics bench" /></picture><figcaption>Green flight props on, top down, on the optics bench.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view of the hexacopter with green flight props on the optics bench" /></picture><figcaption>Green flight props on, top down, on the optics bench.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mae3-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow competition robot, full view" /></picture><figcaption>The competition robot, 3D-printed and built from scratch.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow competition robot, full view" /></picture><figcaption>The competition robot, 3D-printed and built from scratch.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/cannon-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Cannon, side profile: turned barrel on a milled stand and base.</figcaption></figure>
+        <img width="1500" height="1318" loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Cannon, side profile: turned barrel on a milled stand and base.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mouse-modules.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /></picture><figcaption>Two touchscreen modules linked by the transfer tube.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /></picture><figcaption>Two touchscreen modules linked by the transfer tube.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-front.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-front.jpg" alt="The bare hexacopter airframe head-on, on a stool in the lab" /></picture><figcaption>The airframe head-on, between build sessions in the lab.</figcaption></figure>
+        <img width="1125" height="1500" loading="lazy" decoding="async" src="images/drone-front.jpg" alt="The bare hexacopter airframe head-on, on a stool in the lab" /></picture><figcaption>The airframe head-on, between build sessions in the lab.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mae3-3.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mae3-3.jpg" alt="The robot with its first-place certificate" /></picture><figcaption>First place, Fall 2024.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mae3-3.jpg" alt="The robot with its first-place certificate" /></picture><figcaption>First place, Fall 2024.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mae3-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mae3-1.jpg" alt="The robot's arm, gear train, and drivetrain up close" /></picture><figcaption>The competition robot up close: gear train, arm, and drivetrain.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mae3-1.jpg" alt="The robot's arm, gear train, and drivetrain up close" /></picture><figcaption>The competition robot up close: gear train, arm, and drivetrain.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/mouse-system-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /></picture><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /></picture><figcaption>Presenting the senior design project at the showcase.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -367,16 +364,16 @@
     <div class="xp-photos">
       <figure><picture>
         <source srcset="images/cannon-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon with ball-bearing ammo" /></picture><figcaption>The finished cannon, ball bearings for scale.</figcaption></figure>
+        <img width="1500" height="1276" loading="lazy" decoding="async" src="images/cannon-1.jpg" alt="The finished machined aluminum cannon with ball-bearing ammo" /></picture><figcaption>The finished cannon, ball bearings for scale.</figcaption></figure>
       <figure><picture>
         <source srcset="images/cannon-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Side profile: turned barrel on the milled stand.</figcaption></figure>
+        <img width="1500" height="1318" loading="lazy" decoding="async" src="images/cannon-2.jpg" alt="Side profile of the machined cannon on its stand" /></picture><figcaption>Side profile: turned barrel on the milled stand.</figcaption></figure>
       <figure><picture>
         <source srcset="images/cannon-cad.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly of the cannon" /></picture><figcaption>The SolidWorks assembly it started from.</figcaption></figure>
+        <img width="978" height="783" loading="lazy" decoding="async" src="images/cannon-cad.jpg" alt="The SolidWorks CAD assembly of the cannon" /></picture><figcaption>The SolidWorks assembly it started from.</figcaption></figure>
       <figure><picture>
         <source srcset="images/cannon-drawing.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/cannon-drawing.jpg" alt="A dimensioned engineering drawing of the cannon barrel" /></picture><figcaption>One of the toleranced part drawings.</figcaption></figure>
+        <img width="1500" height="1159" loading="lazy" decoding="async" src="images/cannon-drawing.jpg" alt="A dimensioned engineering drawing of the cannon barrel" /></picture><figcaption>One of the toleranced part drawings.</figcaption></figure>
     </div>
   </div>
 
@@ -396,13 +393,13 @@
     <div class="xp-photos">
       <figure><picture>
         <source srcset="images/mae3-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow 3D-printed competition robot, full view" /></picture><figcaption>The robot, 3D-printed and built from scratch.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mae3-2.jpg" alt="The yellow 3D-printed competition robot, full view" /></picture><figcaption>The robot, 3D-printed and built from scratch.</figcaption></figure>
       <figure><picture>
         <source srcset="images/mae3-3.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mae3-3.jpg" alt="The robot with its first-place certificate" /></picture><figcaption>First place, Fall 2024.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mae3-3.jpg" alt="The robot with its first-place certificate" /></picture><figcaption>First place, Fall 2024.</figcaption></figure>
       <figure><picture>
         <source srcset="images/mae3-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mae3-1.jpg" alt="The robot's arm, gear train, and drivetrain up close" /></picture><figcaption>Gear train, arm, and drivetrain up close.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mae3-1.jpg" alt="The robot's arm, gear train, and drivetrain up close" /></picture><figcaption>Gear train, arm, and drivetrain up close.</figcaption></figure>
     </div>
   </div>
 
@@ -422,7 +419,7 @@
     <div class="xp-photos single">
       <figure><picture>
         <source srcset="images/metrology-art.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/metrology-art.jpg" alt="Diagram of a three-point bend test on a beam" /></picture><figcaption>Three-point bending, the test behind the fatigue data.</figcaption></figure>
+        <img width="916" height="410" loading="lazy" decoding="async" src="images/metrology-art.jpg" alt="Diagram of a three-point bend test on a beam" /></picture><figcaption>Three-point bending, the test behind the fatigue data.</figcaption></figure>
     </div>
   </div>
 
@@ -446,7 +443,7 @@
     <div class="xp-photos single">
       <figure><picture>
         <source srcset="images/software-art.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/software-art.jpg" alt="Illustration of a laptop running code" /></picture><figcaption>The software side of the toolbox.</figcaption></figure>
+        <img width="1000" height="703" loading="lazy" decoding="async" src="images/software-art.jpg" alt="Illustration of a laptop running code" /></picture><figcaption>The software side of the toolbox.</figcaption></figure>
     </div>
   </div>
 
@@ -467,13 +464,13 @@
     <div class="xp-photos">
       <figure><picture>
         <source srcset="images/mouse-rig.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /></picture><figcaption>The full rig: chambers, touchscreens, control box.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-rig.jpg" alt="The full automated mouse-training rig on the lab bench" /></picture><figcaption>The full rig: chambers, touchscreens, control box.</figcaption></figure>
       <figure><picture>
         <source srcset="images/mouse-modules.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /></picture><figcaption>Touchscreen modules and the transfer tube.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/mouse-modules.jpg" alt="Two touchscreen modules joined by the transfer tube" /></picture><figcaption>Touchscreen modules and the transfer tube.</figcaption></figure>
       <figure><picture>
         <source srcset="images/mouse-system-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /></picture><figcaption>Presenting at the senior design showcase.</figcaption></figure>
+        <img width="1200" height="1600" loading="lazy" decoding="async" src="images/mouse-system-1.jpg" alt="Presenting the senior design project at the showcase" /></picture><figcaption>Presenting at the senior design showcase.</figcaption></figure>
     </div>
   </div>
 
@@ -494,16 +491,16 @@
     <div class="xp-photos">
       <figure><picture>
         <source srcset="images/drone-final-persp.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></picture><figcaption>The finished aircraft, props on.</figcaption></figure>
+        <img width="1251" height="1380" loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished fixed-tilt hexacopter with green flight props" /></picture><figcaption>The finished aircraft, props on.</figcaption></figure>
       <figure><picture>
         <source srcset="images/drone-final-side.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, flight-ready" /></picture><figcaption>Side profile, flight-ready.</figcaption></figure>
+        <img width="1500" height="1100" loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, flight-ready" /></picture><figcaption>Side profile, flight-ready.</figcaption></figure>
       <figure><picture>
         <source srcset="images/drone-green-top.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view with green flight props on the optics bench" /></picture><figcaption>Top down on the optics bench.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view with green flight props on the optics bench" /></picture><figcaption>Top down on the optics bench.</figcaption></figure>
       <figure><picture>
         <source srcset="images/drone-build-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build with the flight controller exposed" /></picture><figcaption>Mid-build: electronics exposed, no props yet.</figcaption></figure>
+        <img width="1125" height="1500" loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build with the flight controller exposed" /></picture><figcaption>Mid-build: electronics exposed, no props yet.</figcaption></figure>
     </div>
   </div>
 
@@ -525,16 +522,16 @@
     <div class="xp-photos">
       <figure><picture>
         <source srcset="images/car-detect-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-detect-1.jpg" alt="Trees and shrubs boxed with confidence scores by the onboard model" /></picture><figcaption>What the car sees while it drives.</figcaption></figure>
+        <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-1.jpg" alt="Trees and shrubs boxed with confidence scores by the onboard model" /></picture><figcaption>What the car sees while it drives.</figcaption></figure>
       <figure><picture>
         <source srcset="images/car-detect-3.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="A dense row of trees and shrubs boxed by the model" /></picture><figcaption>A dense stretch, boxed at speed.</figcaption></figure>
+        <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-3.jpg" alt="A dense row of trees and shrubs boxed by the model" /></picture><figcaption>A dense stretch, boxed at speed.</figcaption></figure>
       <figure><picture>
         <source srcset="images/car-detect-2.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-detect-2.jpg" alt="Dense vegetation detected along the route" /></picture><figcaption>Dense growth, boxed at speed.</figcaption></figure>
+        <img width="640" height="360" loading="lazy" decoding="async" src="images/car-detect-2.jpg" alt="Dense vegetation detected along the route" /></picture><figcaption>Dense growth, boxed at speed.</figcaption></figure>
       <figure><picture>
         <source srcset="images/car-track.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/car-track.jpg" alt="The outdoor course at UC San Diego with the cars on it" /></picture><figcaption>The course the routes were recorded on.</figcaption></figure>
+        <img width="750" height="1000" loading="lazy" decoding="async" src="images/car-track.jpg" alt="The outdoor course at UC San Diego with the cars on it" /></picture><figcaption>The course the routes were recorded on.</figcaption></figure>
     </div>
   </div>
 

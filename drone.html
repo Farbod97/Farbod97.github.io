@@ -16,9 +16,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -37,12 +35,12 @@
 
 <section class="hero sub">
   <div class="hero-slides" aria-hidden="true">
-    <div class="slide"><picture>
+    <div class="slide active"><picture>
       <source srcset="images/drone-final-side.webp" type="image/webp" />
-      <img src="images/drone-final-side.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
+      <img width="1500" height="1100" src="images/drone-final-side.jpg" alt="" fetchpriority="high" decoding="async" /></picture></div>
     <div class="slide"><picture>
-      <source srcset="images/drone-final-top2.webp" type="image/webp" />
-      <img src="images/drone-final-top2.jpg" alt="" loading="lazy" decoding="async" /></picture></div>
+      <source data-srcset="images/drone-final-top2.webp" type="image/webp" />
+      <img width="1500" height="1130" data-src="images/drone-final-top2.jpg" alt="" decoding="async" /></picture></div>
   </div>
   <div class="hero-tint" aria-hidden="true"></div>
   <div class="wrap">
@@ -129,11 +127,11 @@
     <div class="ba">
       <figure><picture>
         <source srcset="images/drone-build-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /></picture><figcaption>Mid-build: airframe and flight controller, no props yet.</figcaption></figure>
+        <img width="1125" height="1500" loading="lazy" decoding="async" src="images/drone-build-1.jpg" alt="The drone mid-build, bare airframe with the flight controller exposed" /></picture><figcaption>Mid-build: airframe and flight controller, no props yet.</figcaption></figure>
       <span class="arrow" aria-hidden="true">&rarr;</span>
       <figure><picture>
         <source srcset="images/drone-final-side.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /></picture><figcaption>Finished: props on, wired, and flight-ready.</figcaption></figure>
+        <img width="1500" height="1100" loading="lazy" decoding="async" src="images/drone-final-side.jpg" alt="The finished drone from the side, props mounted and flight-ready" /></picture><figcaption>Finished: props on, wired, and flight-ready.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -153,28 +151,28 @@
     <div class="gallery">
       <figure class="reveal"><picture>
         <source srcset="images/drone-final-hold.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /></picture><figcaption>The finished aircraft, back in the lab where it was built.</figcaption></figure>
+        <img width="854" height="1400" loading="lazy" decoding="async" src="images/drone-final-hold.jpg" alt="Farbod holding the finished hexacopter in the lab" /></picture><figcaption>The finished aircraft, back in the lab where it was built.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-final-top.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-top.jpg" alt="Top-down view of the finished six-rotor drone" /></picture><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
+        <img width="1129" height="1500" loading="lazy" decoding="async" src="images/drone-final-top.jpg" alt="Top-down view of the finished six-rotor drone" /></picture><figcaption>Top down: six ducted rotors in a hexagonal frame.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-final-persp.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished drone at an angle, props mounted" /></picture><figcaption>Props on, ready to fly.</figcaption></figure>
+        <img width="1251" height="1380" loading="lazy" decoding="async" src="images/drone-final-persp.jpg" alt="The finished drone at an angle, props mounted" /></picture><figcaption>Props on, ready to fly.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-final-front.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-final-front.jpg" alt="Front view of the finished drone" /></picture><figcaption>The low, ducted profile from the front.</figcaption></figure>
+        <img width="1500" height="1131" loading="lazy" decoding="async" src="images/drone-final-front.jpg" alt="Front view of the finished drone" /></picture><figcaption>The low, ducted profile from the front.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-green-top.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view with green flight props on the optics bench" /></picture><figcaption>Green flight props mounted, on the optics bench.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/drone-green-top.jpg" alt="Top-down view with green flight props on the optics bench" /></picture><figcaption>Green flight props mounted, on the optics bench.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-green-1.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-green-1.jpg" alt="The drone on the optics bench" /></picture><figcaption>On the optics bench during a work session.</figcaption></figure>
+        <img width="1600" height="1200" loading="lazy" decoding="async" src="images/drone-green-1.jpg" alt="The drone on the optics bench" /></picture><figcaption>On the optics bench during a work session.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-lab.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-lab.jpg" alt="The bare airframe on a stool in the lab" /></picture><figcaption>The airframe between build sessions in the lab.</figcaption></figure>
+        <img width="1125" height="1500" loading="lazy" decoding="async" src="images/drone-lab.jpg" alt="The bare airframe on a stool in the lab" /></picture><figcaption>The airframe between build sessions in the lab.</figcaption></figure>
       <figure class="reveal"><picture>
         <source srcset="images/drone-build-top.webp" type="image/webp" />
-        <img loading="lazy" decoding="async" src="images/drone-build-top.jpg" alt="Top-down of the airframe during assembly" /></picture><figcaption>Assembly: airframe and battery, before the flight props.</figcaption></figure>
+        <img width="1467" height="1500" loading="lazy" decoding="async" src="images/drone-build-top.jpg" alt="Top-down of the airframe during assembly" /></picture><figcaption>Assembly: airframe and battery, before the flight props.</figcaption></figure>
     </div>
   </div>
 </section>
