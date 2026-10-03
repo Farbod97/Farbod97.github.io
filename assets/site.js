@@ -375,7 +375,7 @@
     eb.addEventListener('click', function (e) {
       if (navigator.clipboard) {
         e.preventDefault();
-        navigator.clipboard.writeText('fhaeri@ucsd.edu').then(function () {
+        navigator.clipboard.writeText('4farbodh@gmail.com').then(function () {
           var prev = eb.textContent;
           eb.textContent = 'Copied to clipboard';
           setTimeout(function () { eb.textContent = prev; }, 1600);
